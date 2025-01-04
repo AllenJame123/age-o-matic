@@ -1,7 +1,13 @@
+import { Navigation } from "@/components/Navigation";
 import AgeCalculator from "@/components/AgeCalculator";
 
 const Index = () => {
-  return <AgeCalculator />;
+  return (
+    <>
+      <Navigation />
+      <AgeCalculator />
+    </>
+  );
 };
 
 export default Index;

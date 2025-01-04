@@ -3,6 +3,9 @@ import { format, differenceInYears, differenceInMonths, differenceInDays, differ
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { ResultCard } from "./age-calculator/ResultCard";
+import { HowItWorks } from "./age-calculator/HowItWorks";
+import { FAQ } from "./age-calculator/FAQ";
 
 interface AgeResult {
   years: number;
@@ -22,10 +25,7 @@ const AgeCalculator = () => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 150 }, (_, i) => currentYear - i);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const days = Array.from(
-    { length: 31 },
-    (_, i) => i + 1
-  );
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const calculateAge = () => {
     if (!selectedYear || !selectedMonth || !selectedDay) return;
@@ -145,62 +145,5 @@ const AgeCalculator = () => {
     </div>
   );
 };
-
-const ResultCard = ({ title, value, description }: { title: string; value: string; description: string }) => (
-  <Card className="p-4 text-center bg-white shadow-sm hover:shadow-md transition-shadow">
-    <h3 className="text-sm font-medium text-gray-500 mb-2">{title}</h3>
-    <p className="text-2xl font-bold mb-1">{value}</p>
-    <p className="text-sm text-gray-600">{description}</p>
-  </Card>
-);
-
-const HowItWorks = () => (
-  <Card className="p-6 space-y-4 bg-white/80 backdrop-blur-sm">
-    <h2 className="text-2xl font-bold text-center mb-6">How It Works</h2>
-    <div className="grid gap-6 md:grid-cols-3">
-      <div className="text-center space-y-2">
-        <div className="text-xl font-semibold mb-2">1. Select Your Birth Date</div>
-        <p className="text-gray-600">Choose your birth year, month, and day from the dropdown menus</p>
-      </div>
-      <div className="text-center space-y-2">
-        <div className="text-xl font-semibold mb-2">2. Calculate</div>
-        <p className="text-gray-600">Click the calculate button to process your age</p>
-      </div>
-      <div className="text-center space-y-2">
-        <div className="text-xl font-semibold mb-2">3. View Results</div>
-        <p className="text-gray-600">See your age in various formats and units</p>
-      </div>
-    </div>
-  </Card>
-);
-
-const FAQ = () => (
-  <Card className="p-6 space-y-4 bg-white/80 backdrop-blur-sm">
-    <h2 className="text-2xl font-bold text-center mb-6">
-      Frequently Asked Questions
-    </h2>
-    <div className="space-y-4">
-      <FAQItem
-        question="How is the age calculated?"
-        answer="Our calculator uses precise date arithmetic to compute your exact age in various units, including years, months, days, weeks, and hours."
-      />
-      <FAQItem
-        question="Why might this be useful?"
-        answer="Age calculations are useful for various purposes, including retirement planning, insurance calculations, and celebrating milestone birthdays."
-      />
-      <FAQItem
-        question="How accurate is the calculation?"
-        answer="The calculator provides precise results down to the day, taking into account leap years and varying month lengths."
-      />
-    </div>
-  </Card>
-);
-
-const FAQItem = ({ question, answer }: { question: string; answer: string }) => (
-  <div className="space-y-2">
-    <h3 className="font-semibold text-lg">{question}</h3>
-    <p className="text-gray-600">{answer}</p>
-  </div>
-);
 
 export default AgeCalculator;
