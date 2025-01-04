@@ -9,7 +9,7 @@ export const FAQ = () => {
   return (
     <section className="space-y-4">
       <h2 className="text-2xl font-bold text-center">Frequently Asked Questions</h2>
-      <Accordion type="single" defaultValue="item-1" className="bg-white rounded-lg">
+      <Accordion type="multiple" defaultValue={["item-1", "item-2", "item-3"]} className="bg-white rounded-lg">
         <AccordionItem value="item-1">
           <AccordionTrigger className="px-4">
             How does the date calculator handle weekends?

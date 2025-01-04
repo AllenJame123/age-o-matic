@@ -9,7 +9,7 @@ import { Card } from "@/components/ui/card";
 export const FAQ = () => (
   <Card className="p-6 bg-white/80 backdrop-blur-sm">
     <h2 className="text-2xl font-bold text-center mb-6">Frequently Asked Questions</h2>
-    <Accordion type="single" collapsible defaultValue="item-1" className="w-full">
+    <Accordion type="multiple" defaultValue={["item-1", "item-2", "item-3"]} className="w-full">
       <AccordionItem value="item-1">
         <AccordionTrigger>What is an Age Difference Calculator?</AccordionTrigger>
         <AccordionContent>
