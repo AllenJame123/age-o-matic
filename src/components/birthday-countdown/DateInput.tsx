@@ -49,7 +49,7 @@ export const DateInput = ({
           Month
         </label>
         <Select value={month} onValueChange={onMonthChange}>
-          <SelectTrigger className="bg-soft-purple border-[#E5DEFF] focus:ring-[#9b87f5]">
+          <SelectTrigger className="bg-soft-gray border-[#E5DEFF] focus:ring-[#9b87f5]">
             <SelectValue placeholder="Month" />
           </SelectTrigger>
           <SelectContent>
@@ -68,7 +68,7 @@ export const DateInput = ({
           Day
         </label>
         <Select value={day} onValueChange={onDayChange}>
-          <SelectTrigger className="bg-soft-purple border-[#E5DEFF] focus:ring-[#9b87f5]">
+          <SelectTrigger className="bg-soft-gray border-[#E5DEFF] focus:ring-[#9b87f5]">
             <SelectValue placeholder="Day" />
           </SelectTrigger>
           <SelectContent>
@@ -87,7 +87,7 @@ export const DateInput = ({
           Year
         </label>
         <Select value={year} onValueChange={onYearChange}>
-          <SelectTrigger className="bg-soft-purple border-[#E5DEFF] focus:ring-[#9b87f5]">
+          <SelectTrigger className="bg-soft-gray border-[#E5DEFF] focus:ring-[#9b87f5]">
             <SelectValue placeholder="Year" />
           </SelectTrigger>
           <SelectContent>

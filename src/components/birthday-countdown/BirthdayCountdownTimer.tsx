@@ -20,6 +20,7 @@ export const BirthdayCountdownTimer = () => {
   const [year, setSelectedYear] = useState<string>();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isToday, setIsToday] = useState(false);
+  const [showTimer, setShowTimer] = useState(false);
   const { toast } = useToast();
 
   const calculateNextBirthday = (birthDate: Date): Date => {
@@ -74,12 +75,25 @@ export const BirthdayCountdownTimer = () => {
   };
 
   useEffect(() => {
-    if (month && day && year) {
+    if (showTimer && month && day && year) {
       calculateTimeLeft();
       const timer = setInterval(calculateTimeLeft, 1000);
       return () => clearInterval(timer);
     }
-  }, [month, day, year]);
+  }, [month, day, year, showTimer]);
+
+  const handleStart = () => {
+    if (!month || !day || !year) {
+      toast({
+        title: "Missing information",
+        description: "Please select all date fields",
+        variant: "destructive",
+      });
+      return;
+    }
+    setShowTimer(true);
+    calculateTimeLeft();
+  };
 
   const handleReset = () => {
     setSelectedMonth(undefined);
@@ -87,6 +101,7 @@ export const BirthdayCountdownTimer = () => {
     setSelectedYear(undefined);
     setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     setIsToday(false);
+    setShowTimer(false);
   };
 
   return (
@@ -108,7 +123,14 @@ export const BirthdayCountdownTimer = () => {
           onYearChange={setSelectedYear}
         />
 
-        {month && day && year && !isToday && timeLeft.days >= 0 && (
+        <Button 
+          onClick={handleStart}
+          className="w-full bg-[#FF69B4] hover:bg-[#FF69B4]/90 text-white py-6 text-lg font-medium transition-colors duration-200"
+        >
+          Start Countdown
+        </Button>
+
+        {showTimer && !isToday && timeLeft.days >= 0 && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
             <TimeBlock value={timeLeft.days} label="Days" icon={Calendar} />
             <TimeBlock value={timeLeft.hours} label="Hours" icon={Clock} />
@@ -126,13 +148,15 @@ export const BirthdayCountdownTimer = () => {
           </div>
         )}
 
-        <Button 
-          onClick={handleReset} 
-          variant="outline" 
-          className="w-full py-6 text-lg font-medium hover:bg-[#F8F0FF] transition-colors duration-200 border-2 border-[#FF69B4]"
-        >
-          Reset
-        </Button>
+        {showTimer && (
+          <Button 
+            onClick={handleReset} 
+            variant="outline" 
+            className="w-full py-6 text-lg font-medium hover:bg-[#F8F0FF] transition-colors duration-200 border-2 border-[#FF69B4]"
+          >
+            Reset
+          </Button>
+        )}
       </CardContent>
     </Card>
   );
