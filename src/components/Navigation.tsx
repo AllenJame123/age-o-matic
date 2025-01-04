@@ -31,6 +31,14 @@ export const Navigation = () => {
           >
             Date Calculator
           </Link>
+          <Link
+            to="/birthday-countdown"
+            className={`text-lg font-medium transition-colors hover:text-gray-600 whitespace-nowrap ${
+              location.pathname === "/birthday-countdown" ? "text-gray-900" : "text-gray-500"
+            }`}
+          >
+            Birthday Countdown
+          </Link>
         </div>
       </div>
     </nav>

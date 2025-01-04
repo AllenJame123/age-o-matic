@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Difference from "./pages/Difference";
 import DateCalculator from "./pages/DateCalculator";
+import BirthdayCountdown from "./pages/BirthdayCountdown";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/difference" element={<Difference />} />
           <Route path="/date-calculator" element={<DateCalculator />} />
+          <Route path="/birthday-countdown" element={<BirthdayCountdown />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
