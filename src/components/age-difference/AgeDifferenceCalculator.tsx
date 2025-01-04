@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ResultCard } from "../age-calculator/ResultCard";
+import { HowItWorks } from "./HowItWorks";
+import { FAQ } from "./FAQ";
 
 interface AgeResult {
   years: number;
@@ -118,7 +120,7 @@ export const AgeDifferenceCalculator = () => {
             Age Difference Calculator
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Calculate the exact age difference between two dates
+            Calculate the exact age difference between two dates with precision
           </p>
         </div>
 
@@ -159,6 +161,9 @@ export const AgeDifferenceCalculator = () => {
             )}
           </div>
         </Card>
+
+        <HowItWorks />
+        <FAQ />
       </div>
     </div>
   );

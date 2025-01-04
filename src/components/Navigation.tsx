@@ -21,7 +21,7 @@ export const Navigation = () => {
               location.pathname === "/difference" ? "text-gray-900" : "text-gray-500"
             }`}
           >
-            Age Difference
+            Age Difference Calculator
           </Link>
         </div>
       </div>
