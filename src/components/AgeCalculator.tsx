@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { format, differenceInYears, differenceInMonths, differenceInDays, differenceInWeeks, differenceInHours } from "date-fns";
-import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface AgeResult {
   years: number;
@@ -17,19 +14,35 @@ interface AgeResult {
 }
 
 const AgeCalculator = () => {
-  const [date, setDate] = useState<Date>();
+  const [selectedYear, setSelectedYear] = useState<string>("");
+  const [selectedMonth, setSelectedMonth] = useState<string>("");
+  const [selectedDay, setSelectedDay] = useState<string>("");
   const [result, setResult] = useState<AgeResult | null>(null);
 
-  const calculateAge = () => {
-    if (!date) return;
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 150 }, (_, i) => currentYear - i);
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  const days = Array.from(
+    { length: 31 },
+    (_, i) => i + 1
+  );
 
+  const calculateAge = () => {
+    if (!selectedYear || !selectedMonth || !selectedDay) return;
+
+    const birthDate = new Date(
+      parseInt(selectedYear),
+      parseInt(selectedMonth) - 1,
+      parseInt(selectedDay)
+    );
     const now = new Date();
-    const years = differenceInYears(now, date);
-    const months = differenceInMonths(now, date) % 12;
-    const days = differenceInDays(now, date) % 30;
-    const totalDays = differenceInDays(now, date);
-    const weeks = differenceInWeeks(now, date);
-    const hours = differenceInHours(now, date);
+
+    const years = differenceInYears(now, birthDate);
+    const months = differenceInMonths(now, birthDate) % 12;
+    const days = differenceInDays(now, birthDate) % 30;
+    const totalDays = differenceInDays(now, birthDate);
+    const weeks = differenceInWeeks(now, birthDate);
+    const hours = differenceInHours(now, birthDate);
 
     setResult({
       years,
@@ -56,33 +69,49 @@ const AgeCalculator = () => {
         <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
           <div className="space-y-6">
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className={cn(
-                      "w-full sm:w-[280px] justify-start text-left font-normal",
-                      !date && "text-muted-foreground"
-                    )}
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {date ? format(date, "PPP") : "Select your birth date"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={date}
-                    onSelect={setDate}
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
+              <Select onValueChange={setSelectedYear} value={selectedYear}>
+                <SelectTrigger className="w-[140px]">
+                  <SelectValue placeholder="Year" />
+                </SelectTrigger>
+                <SelectContent>
+                  {years.map((year) => (
+                    <SelectItem key={year} value={year.toString()}>
+                      {year}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <Select onValueChange={setSelectedMonth} value={selectedMonth}>
+                <SelectTrigger className="w-[140px]">
+                  <SelectValue placeholder="Month" />
+                </SelectTrigger>
+                <SelectContent>
+                  {months.map((month) => (
+                    <SelectItem key={month} value={month.toString()}>
+                      {format(new Date(2024, month - 1), "MMMM")}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <Select onValueChange={setSelectedDay} value={selectedDay}>
+                <SelectTrigger className="w-[140px]">
+                  <SelectValue placeholder="Day" />
+                </SelectTrigger>
+                <SelectContent>
+                  {days.map((day) => (
+                    <SelectItem key={day} value={day.toString()}>
+                      {day}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
               <Button
                 onClick={calculateAge}
                 className="w-full sm:w-auto bg-soft-purple hover:bg-soft-purple/90 text-gray-800"
-                disabled={!date}
+                disabled={!selectedYear || !selectedMonth || !selectedDay}
               >
                 Calculate Age
               </Button>
@@ -91,33 +120,57 @@ const AgeCalculator = () => {
             {result && (
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-slideUp">
                 <ResultCard
-                  title="Years, Months, Days"
-                  value={`${result.years}y ${result.months}m ${result.days}d`}
+                  title="Your Age"
+                  value={`${result.years} years, ${result.months} months, ${result.days} days`}
+                  description="Precise age calculation"
                 />
                 <ResultCard
                   title="Total Days"
                   value={result.totalDays.toLocaleString()}
+                  description="Number of days you've lived"
                 />
                 <ResultCard
                   title="Other Units"
-                  value={`${result.weeks.toLocaleString()} weeks
-                         ${result.hours.toLocaleString()} hours`}
+                  value={`${result.weeks.toLocaleString()} weeks`}
+                  description={`${result.hours.toLocaleString()} hours`}
                 />
               </div>
             )}
           </div>
         </Card>
 
+        <HowItWorks />
         <FAQ />
       </div>
     </div>
   );
 };
 
-const ResultCard = ({ title, value }: { title: string; value: string }) => (
+const ResultCard = ({ title, value, description }: { title: string; value: string; description: string }) => (
   <Card className="p-4 text-center bg-white shadow-sm hover:shadow-md transition-shadow">
     <h3 className="text-sm font-medium text-gray-500 mb-2">{title}</h3>
-    <p className="text-2xl font-bold">{value}</p>
+    <p className="text-2xl font-bold mb-1">{value}</p>
+    <p className="text-sm text-gray-600">{description}</p>
+  </Card>
+);
+
+const HowItWorks = () => (
+  <Card className="p-6 space-y-4 bg-white/80 backdrop-blur-sm">
+    <h2 className="text-2xl font-bold text-center mb-6">How It Works</h2>
+    <div className="grid gap-6 md:grid-cols-3">
+      <div className="text-center space-y-2">
+        <div className="text-xl font-semibold mb-2">1. Select Your Birth Date</div>
+        <p className="text-gray-600">Choose your birth year, month, and day from the dropdown menus</p>
+      </div>
+      <div className="text-center space-y-2">
+        <div className="text-xl font-semibold mb-2">2. Calculate</div>
+        <p className="text-gray-600">Click the calculate button to process your age</p>
+      </div>
+      <div className="text-center space-y-2">
+        <div className="text-xl font-semibold mb-2">3. View Results</div>
+        <p className="text-gray-600">See your age in various formats and units</p>
+      </div>
+    </div>
   </Card>
 );
 
