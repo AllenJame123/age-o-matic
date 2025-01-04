@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Cake } from "lucide-react";
+import { Cake, Calendar, Clock, Gift, PartyPopper } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { format, differenceInSeconds, addYears, isAfter, isSameDay } from "date-fns";
 
@@ -86,25 +86,27 @@ export const BirthdayCountdownTimer = () => {
     setIsToday(false);
   };
 
-  const TimeBlock = ({ value, label }: { value: number; label: string }) => (
-    <div className="flex flex-col items-center p-4 bg-soft-purple rounded-lg animate-fade-in">
+  const TimeBlock = ({ value, label, icon: Icon }: { value: number; label: string; icon: any }) => (
+    <div className="flex flex-col items-center p-4 bg-soft-purple rounded-lg animate-fadeIn hover:scale-105 transition-transform duration-200">
+      <Icon className="h-6 w-6 text-primary mb-2 animate-bounce" />
       <span className="text-4xl font-bold text-primary mb-2">{value}</span>
       <span className="text-sm text-gray-600">{label}</span>
     </div>
   );
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-lg animate-fade-in">
+    <Card className="w-full max-w-2xl mx-auto shadow-lg animate-fadeIn">
       <CardHeader className="text-center">
         <CardTitle className="flex items-center justify-center gap-2 text-2xl">
-          <Cake className="h-6 w-6 text-primary" />
+          <Cake className="h-6 w-6 text-primary animate-bounce" />
           Birthday Countdown Timer
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="name" className="text-sm font-medium">
+            <label htmlFor="name" className="text-sm font-medium flex items-center gap-2">
+              <Gift className="h-4 w-4" />
               Name
             </label>
             <Input
@@ -116,7 +118,8 @@ export const BirthdayCountdownTimer = () => {
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="birthdate" className="text-sm font-medium">
+            <label htmlFor="birthdate" className="text-sm font-medium flex items-center gap-2">
+              <Calendar className="h-4 w-4" />
               Birthday
             </label>
             <Input
@@ -132,15 +135,16 @@ export const BirthdayCountdownTimer = () => {
 
         {birthDate && name && !isToday && (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <TimeBlock value={timeLeft.days} label="Days" />
-            <TimeBlock value={timeLeft.hours} label="Hours" />
-            <TimeBlock value={timeLeft.minutes} label="Minutes" />
-            <TimeBlock value={timeLeft.seconds} label="Seconds" />
+            <TimeBlock value={timeLeft.days} label="Days" icon={Calendar} />
+            <TimeBlock value={timeLeft.hours} label="Hours" icon={Clock} />
+            <TimeBlock value={timeLeft.minutes} label="Minutes" icon={Clock} />
+            <TimeBlock value={timeLeft.seconds} label="Seconds" icon={Clock} />
           </div>
         )}
 
         {isToday && (
           <div className="text-center p-6 bg-soft-purple rounded-lg animate-bounce">
+            <PartyPopper className="h-12 w-12 text-primary mx-auto mb-4" />
             <h2 className="text-2xl font-bold text-primary">
               🎉 Happy Birthday, {name}! 🎂
             </h2>
@@ -150,7 +154,7 @@ export const BirthdayCountdownTimer = () => {
         <Button 
           onClick={handleReset} 
           variant="outline" 
-          className="w-full"
+          className="w-full hover:bg-soft-purple transition-colors duration-200"
         >
           Reset
         </Button>
