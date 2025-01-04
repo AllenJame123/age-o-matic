@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Cake, Calendar, Clock, Gift, PartyPopper, Balloon } from "lucide-react";
+import { Cake, Calendar, Clock, Gift, PartyPopper, Stars } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { format, differenceInSeconds, addYears, isAfter, isSameDay } from "date-fns";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
@@ -100,7 +100,7 @@ export const BirthdayCountdownTimer = () => {
         <CardTitle className="flex items-center justify-center gap-3 text-3xl">
           <Cake className="h-8 w-8 text-primary animate-bounce" />
           Birthday Countdown
-          <Balloon className="h-8 w-8 text-primary animate-bounce" />
+          <Stars className="h-8 w-8 text-primary animate-bounce" />
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-8">
