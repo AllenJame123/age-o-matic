@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Cake, Calendar, Clock, Gift, PartyPopper } from "lucide-react";
+import { Cake, Calendar, Clock, Gift, PartyPopper, Balloon } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { format, differenceInSeconds, addYears, isAfter, isSameDay } from "date-fns";
+import { Calendar as CalendarComponent } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 interface TimeLeft {
   days: number;
@@ -15,16 +17,15 @@ interface TimeLeft {
 
 export const BirthdayCountdownTimer = () => {
   const [name, setName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
+  const [birthDate, setBirthDate] = useState<Date>();
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isToday, setIsToday] = useState(false);
   const { toast } = useToast();
 
-  const calculateNextBirthday = (birthDateStr: string): Date => {
+  const calculateNextBirthday = (date: Date): Date => {
     const today = new Date();
-    const birth = new Date(birthDateStr);
-    const birthMonth = birth.getMonth();
-    const birthDay = birth.getDate();
+    const birthMonth = date.getMonth();
+    const birthDay = date.getDate();
     
     let nextBirthday = new Date(today.getFullYear(), birthMonth, birthDay);
     
@@ -38,10 +39,9 @@ export const BirthdayCountdownTimer = () => {
   const calculateTimeLeft = () => {
     if (!birthDate) return;
 
-    const birthDateObj = new Date(birthDate);
     const today = new Date();
     
-    if (isAfter(birthDateObj, today)) {
+    if (isAfter(birthDate, today)) {
       toast({
         title: "Invalid date",
         description: "Birthday cannot be in the future",
@@ -81,60 +81,72 @@ export const BirthdayCountdownTimer = () => {
 
   const handleReset = () => {
     setName("");
-    setBirthDate("");
+    setBirthDate(undefined);
     setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
     setIsToday(false);
   };
 
   const TimeBlock = ({ value, label, icon: Icon }: { value: number; label: string; icon: any }) => (
-    <div className="flex flex-col items-center p-4 bg-soft-purple rounded-lg animate-fadeIn hover:scale-105 transition-transform duration-200">
-      <Icon className="h-6 w-6 text-primary mb-2 animate-bounce" />
-      <span className="text-4xl font-bold text-primary mb-2">{value}</span>
-      <span className="text-sm text-gray-600">{label}</span>
+    <div className="flex flex-col items-center p-6 bg-gradient-to-b from-soft-purple to-white rounded-xl shadow-lg animate-fadeIn hover:scale-105 transition-transform duration-200 border-2 border-soft-purple">
+      <Icon className="h-8 w-8 text-primary mb-3 animate-bounce" />
+      <span className="text-5xl font-bold text-primary mb-2 font-mono">{value.toString().padStart(2, '0')}</span>
+      <span className="text-sm font-medium text-gray-600 uppercase tracking-wider">{label}</span>
     </div>
   );
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-lg animate-fadeIn">
-      <CardHeader className="text-center">
-        <CardTitle className="flex items-center justify-center gap-2 text-2xl">
-          <Cake className="h-6 w-6 text-primary animate-bounce" />
-          Birthday Countdown Timer
+    <Card className="w-full max-w-2xl mx-auto shadow-xl animate-fadeIn bg-gradient-to-b from-white to-soft-gray rounded-2xl">
+      <CardHeader className="text-center pb-2">
+        <CardTitle className="flex items-center justify-center gap-3 text-3xl">
+          <Cake className="h-8 w-8 text-primary animate-bounce" />
+          Birthday Countdown
+          <Balloon className="h-8 w-8 text-primary animate-bounce" />
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="space-y-4">
+      <CardContent className="space-y-8">
+        <div className="space-y-6">
           <div className="space-y-2">
             <label htmlFor="name" className="text-sm font-medium flex items-center gap-2">
-              <Gift className="h-4 w-4" />
-              Name
+              <Gift className="h-5 w-5 text-primary" />
+              Enter Name
             </label>
             <Input
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Enter name"
-              className="w-full"
+              placeholder="Enter your name"
+              className="text-lg py-6 px-4 border-2 border-soft-purple focus:ring-2 focus:ring-primary"
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="birthdate" className="text-sm font-medium flex items-center gap-2">
-              <Calendar className="h-4 w-4" />
-              Birthday
+            <label className="text-sm font-medium flex items-center gap-2">
+              <Calendar className="h-5 w-5 text-primary" />
+              Select Birthday
             </label>
-            <Input
-              id="birthdate"
-              type="date"
-              value={birthDate}
-              onChange={(e) => setBirthDate(e.target.value)}
-              max={format(new Date(), "yyyy-MM-dd")}
-              className="w-full"
-            />
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="w-full text-lg py-6 px-4 border-2 border-soft-purple hover:bg-soft-purple/20"
+                >
+                  {birthDate ? format(birthDate, 'PPP') : 'Pick a date'}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <CalendarComponent
+                  mode="single"
+                  selected={birthDate}
+                  onSelect={setBirthDate}
+                  disabled={(date) => isAfter(date, new Date())}
+                  initialFocus
+                />
+              </PopoverContent>
+            </Popover>
           </div>
         </div>
 
         {birthDate && name && !isToday && (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-4">
             <TimeBlock value={timeLeft.days} label="Days" icon={Calendar} />
             <TimeBlock value={timeLeft.hours} label="Hours" icon={Clock} />
             <TimeBlock value={timeLeft.minutes} label="Minutes" icon={Clock} />
@@ -143,9 +155,9 @@ export const BirthdayCountdownTimer = () => {
         )}
 
         {isToday && (
-          <div className="text-center p-6 bg-soft-purple rounded-lg animate-bounce">
-            <PartyPopper className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-primary">
+          <div className="text-center p-8 bg-gradient-to-r from-soft-purple via-white to-soft-purple rounded-xl animate-pulse shadow-lg">
+            <PartyPopper className="h-16 w-16 text-primary mx-auto mb-4 animate-bounce" />
+            <h2 className="text-3xl font-bold text-primary">
               🎉 Happy Birthday, {name}! 🎂
             </h2>
           </div>
@@ -154,7 +166,7 @@ export const BirthdayCountdownTimer = () => {
         <Button 
           onClick={handleReset} 
           variant="outline" 
-          className="w-full hover:bg-soft-purple transition-colors duration-200"
+          className="w-full py-6 text-lg font-medium hover:bg-soft-purple transition-colors duration-200 border-2 border-soft-purple"
         >
           Reset
         </Button>
