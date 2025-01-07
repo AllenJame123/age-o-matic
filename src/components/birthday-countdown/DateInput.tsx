@@ -45,11 +45,11 @@ export const DateInput = ({
     <div className="grid grid-cols-3 gap-4">
       <div className="space-y-2">
         <label className="text-sm font-medium flex items-center gap-2">
-          <Calendar className="h-4 w-4 text-[#FF69B4]" />
+          <Calendar className="h-4 w-4 text-primary" />
           Month
         </label>
         <Select value={month} onValueChange={onMonthChange}>
-          <SelectTrigger className="bg-soft-gray border-[#E5DEFF] focus:ring-[#9b87f5]">
+          <SelectTrigger className="bg-soft-gray border-soft-purple focus:ring-primary">
             <SelectValue placeholder="Month" />
           </SelectTrigger>
           <SelectContent>
@@ -64,11 +64,11 @@ export const DateInput = ({
 
       <div className="space-y-2">
         <label className="text-sm font-medium flex items-center gap-2">
-          <Calendar className="h-4 w-4 text-[#FF69B4]" />
+          <Calendar className="h-4 w-4 text-primary" />
           Day
         </label>
         <Select value={day} onValueChange={onDayChange}>
-          <SelectTrigger className="bg-soft-gray border-[#E5DEFF] focus:ring-[#9b87f5]">
+          <SelectTrigger className="bg-soft-gray border-soft-purple focus:ring-primary">
             <SelectValue placeholder="Day" />
           </SelectTrigger>
           <SelectContent>
@@ -83,11 +83,11 @@ export const DateInput = ({
 
       <div className="space-y-2">
         <label className="text-sm font-medium flex items-center gap-2">
-          <Calendar className="h-4 w-4 text-[#FF69B4]" />
+          <Calendar className="h-4 w-4 text-primary" />
           Year
         </label>
         <Select value={year} onValueChange={onYearChange}>
-          <SelectTrigger className="bg-soft-gray border-[#E5DEFF] focus:ring-[#9b87f5]">
+          <SelectTrigger className="bg-soft-gray border-soft-purple focus:ring-primary">
             <SelectValue placeholder="Year" />
           </SelectTrigger>
           <SelectContent>

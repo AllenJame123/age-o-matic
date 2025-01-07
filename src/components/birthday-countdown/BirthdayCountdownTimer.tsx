@@ -105,12 +105,12 @@ export const BirthdayCountdownTimer = () => {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto shadow-xl bg-gradient-to-b from-white to-[#F8F0FF] rounded-2xl">
+    <Card className="w-full max-w-2xl mx-auto shadow-lg bg-white/80 backdrop-blur-sm">
       <CardHeader className="text-center pb-2">
         <CardTitle className="flex items-center justify-center gap-3 text-3xl">
-          <Cake className="h-8 w-8 text-[#FF69B4]" />
+          <Cake className="h-8 w-8 text-primary" />
           Birthday Countdown
-          <Stars className="h-8 w-8 text-[#4B0082]" />
+          <Stars className="h-8 w-8 text-primary" />
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-8">
@@ -125,7 +125,7 @@ export const BirthdayCountdownTimer = () => {
 
         <Button 
           onClick={handleStart}
-          className="w-full bg-[#FF69B4] hover:bg-[#FF69B4]/90 text-white py-6 text-lg font-medium transition-colors duration-200"
+          className="w-full bg-soft-purple hover:bg-soft-purple/90 text-gray-800 py-6 text-lg font-medium transition-colors duration-200"
         >
           Start Countdown
         </Button>
@@ -140,9 +140,9 @@ export const BirthdayCountdownTimer = () => {
         )}
 
         {isToday && (
-          <div className="text-center p-8 bg-gradient-to-r from-[#FF69B4] via-white to-[#4B0082] rounded-xl shadow-lg">
+          <div className="text-center p-8 bg-gradient-to-r from-soft-purple via-white to-soft-purple rounded-xl shadow-lg">
             <PartyPopper className="h-16 w-16 text-[#FFD700] mx-auto mb-4" />
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-[#FF69B4] to-[#4B0082] bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-primary to-soft-purple bg-clip-text text-transparent">
               🎉 Happy Birthday! 🎂
             </h2>
           </div>
@@ -152,7 +152,7 @@ export const BirthdayCountdownTimer = () => {
           <Button 
             onClick={handleReset} 
             variant="outline" 
-            className="w-full py-6 text-lg font-medium hover:bg-[#F8F0FF] transition-colors duration-200 border-2 border-[#FF69B4]"
+            className="w-full py-6 text-lg font-medium hover:bg-soft-gray transition-colors duration-200 border-2 border-soft-purple"
           >
             Reset
           </Button>
