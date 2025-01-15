@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Calendar } from "lucide-react";
 import { useState } from "react";
 
 export const Navigation = () => {
@@ -12,8 +12,8 @@ export const Navigation = () => {
     <nav className="bg-white shadow-sm mb-8 relative">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <div className="text-lg font-medium text-gray-900">
-            Age Tools
+          <div className="flex items-center gap-2">
+            <Calendar className="h-8 w-8 text-purple-600" />
           </div>
           
           {/* Mobile menu button */}
