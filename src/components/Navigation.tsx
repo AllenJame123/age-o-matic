@@ -12,12 +12,9 @@ export const Navigation = () => {
     <nav className="bg-white shadow-sm mb-8 relative">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link
-            to="/"
-            className="text-lg font-medium text-gray-900"
-          >
-            Age Calculator
-          </Link>
+          <div className="text-lg font-medium text-gray-900">
+            Age Tools
+          </div>
           
           {/* Mobile menu button */}
           <button
