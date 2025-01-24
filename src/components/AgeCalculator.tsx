@@ -110,7 +110,7 @@ const AgeCalculator = () => {
 
               <Button
                 onClick={calculateAge}
-                className="w-full sm:w-auto bg-soft-purple hover:bg-soft-purple/90 text-gray-800"
+                className="w-full sm:w-auto bg-primary hover:bg-primary-light text-primary-foreground"
                 disabled={!selectedYear || !selectedMonth || !selectedDay}
               >
                 Calculate Age
