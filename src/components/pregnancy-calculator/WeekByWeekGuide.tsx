@@ -1,4 +1,5 @@
 import { getComparisonForWeek } from "@/utils/babySize";
+import { MilestonesAndTips } from "./MilestonesAndTips";
 
 interface WeekByWeekGuideProps {
   currentWeek: number;
@@ -27,6 +28,8 @@ export const WeekByWeekGuide = ({ currentWeek }: WeekByWeekGuideProps) => {
         </div>
         <p className="text-center text-gray-600">{babySize.description}</p>
       </div>
+
+      <MilestonesAndTips week={currentWeek} />
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="bg-white p-6 rounded-lg shadow-md">
