@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Difference from "./pages/Difference";
 import DateCalculator from "./pages/DateCalculator";
 import BirthdayCountdown from "./pages/BirthdayCountdown";
+import PregnancyCalculator from "./pages/PregnancyCalculator";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/difference" element={<Difference />} />
           <Route path="/date-calculator" element={<DateCalculator />} />
           <Route path="/birthday-countdown" element={<BirthdayCountdown />} />
+          <Route path="/pregnancy-calculator" element={<PregnancyCalculator />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>

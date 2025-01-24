@@ -69,6 +69,16 @@ export const Navigation = () => {
             >
               Birthday Countdown
             </Link>
+            <Link
+              to="/pregnancy-calculator"
+              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+                location.pathname === "/pregnancy-calculator"
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-neutral-gray"
+              }`}
+            >
+              Pregnancy Age
+            </Link>
           </div>
         </div>
       </div>
@@ -123,6 +133,17 @@ export const Navigation = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Birthday Countdown
+          </Link>
+          <Link
+            to="/pregnancy-calculator"
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
+              location.pathname === "/pregnancy-calculator"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Pregnancy Age
           </Link>
         </div>
       </div>
