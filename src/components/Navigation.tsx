@@ -9,17 +9,16 @@ export const Navigation = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   return (
-    <nav className="bg-white shadow-sm mb-8 relative">
+    <nav className="bg-white shadow-lg mb-8 relative">
       <div className="max-w-4xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-2">
-            <Calendar className="h-8 w-8 text-purple-600" />
+            <Calendar className="h-8 w-8 text-primary" />
           </div>
           
-          {/* Mobile menu button */}
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md text-gray-500 hover:text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
+            className="md:hidden p-2 rounded-md text-neutral-gray hover:text-neutral-dark hover:bg-soft-purple focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <span className="sr-only">Open menu</span>
             {isMenuOpen ? (
@@ -29,36 +28,43 @@ export const Navigation = () => {
             )}
           </button>
 
-          {/* Desktop navigation */}
           <div className="hidden md:flex md:space-x-8">
             <Link
               to="/"
-              className={`text-lg font-medium transition-colors hover:text-gray-600 ${
-                location.pathname === "/" ? "text-gray-900" : "text-gray-500"
+              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+                location.pathname === "/" 
+                  ? "text-primary border-b-2 border-primary" 
+                  : "text-neutral-gray"
               }`}
             >
               Age Calculator
             </Link>
             <Link
               to="/difference"
-              className={`text-lg font-medium transition-colors hover:text-gray-600 ${
-                location.pathname === "/difference" ? "text-gray-900" : "text-gray-500"
+              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+                location.pathname === "/difference"
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-neutral-gray"
               }`}
             >
               Age Difference
             </Link>
             <Link
               to="/date-calculator"
-              className={`text-lg font-medium transition-colors hover:text-gray-600 ${
-                location.pathname === "/date-calculator" ? "text-gray-900" : "text-gray-500"
+              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+                location.pathname === "/date-calculator"
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-neutral-gray"
               }`}
             >
               Date Calculator
             </Link>
             <Link
               to="/birthday-countdown"
-              className={`text-lg font-medium transition-colors hover:text-gray-600 ${
-                location.pathname === "/birthday-countdown" ? "text-gray-900" : "text-gray-500"
+              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+                location.pathname === "/birthday-countdown"
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-neutral-gray"
               }`}
             >
               Birthday Countdown
@@ -76,10 +82,10 @@ export const Navigation = () => {
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
             to="/"
-            className={`block px-3 py-2 rounded-md text-base font-medium ${
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
               location.pathname === "/"
-                ? "bg-soft-purple text-gray-900"
-                : "text-gray-500 hover:bg-soft-gray hover:text-gray-900"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
             }`}
             onClick={() => setIsMenuOpen(false)}
           >
@@ -87,10 +93,10 @@ export const Navigation = () => {
           </Link>
           <Link
             to="/difference"
-            className={`block px-3 py-2 rounded-md text-base font-medium ${
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
               location.pathname === "/difference"
-                ? "bg-soft-purple text-gray-900"
-                : "text-gray-500 hover:bg-soft-gray hover:text-gray-900"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
             }`}
             onClick={() => setIsMenuOpen(false)}
           >
@@ -98,10 +104,10 @@ export const Navigation = () => {
           </Link>
           <Link
             to="/date-calculator"
-            className={`block px-3 py-2 rounded-md text-base font-medium ${
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
               location.pathname === "/date-calculator"
-                ? "bg-soft-purple text-gray-900"
-                : "text-gray-500 hover:bg-soft-gray hover:text-gray-900"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
             }`}
             onClick={() => setIsMenuOpen(false)}
           >
@@ -109,10 +115,10 @@ export const Navigation = () => {
           </Link>
           <Link
             to="/birthday-countdown"
-            className={`block px-3 py-2 rounded-md text-base font-medium ${
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
               location.pathname === "/birthday-countdown"
-                ? "bg-soft-purple text-gray-900"
-                : "text-gray-500 hover:bg-soft-gray hover:text-gray-900"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
             }`}
             onClick={() => setIsMenuOpen(false)}
           >
