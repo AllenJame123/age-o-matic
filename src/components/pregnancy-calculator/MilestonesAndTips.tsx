@@ -10,7 +10,7 @@ interface MilestonesAndTipsProps {
 // Fallback data from CDC guidelines
 const cdcMilestones: Record<number, { milestone: string; tip: string }> = {
   4: {
-    milestone: "The embryo is now about the size of a poppy seed (0.04-0.08 inches). Major organs begin to form.",
+    milestone: "Major organs begin to form, including the neural tube which will become the brain and spinal cord.",
     tip: "Start taking prenatal vitamins if you haven't already.",
   },
   8: {
