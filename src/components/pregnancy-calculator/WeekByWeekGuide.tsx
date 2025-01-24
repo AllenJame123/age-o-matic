@@ -1,35 +1,19 @@
-import { Baby, Circle, Grape, Apple, Flower2, Banana, Cherry } from "lucide-react";
-import { getBabySizeForWeek } from "@/utils/babySize";
+import { getComparisonForWeek } from "@/utils/babySize";
 
 interface WeekByWeekGuideProps {
   currentWeek: number;
 }
 
-const getIconComponent = (iconName: string) => {
-  switch (iconName) {
-    case "baby":
-      return <Baby className="w-8 h-8 text-primary" />;
-    case "dot":
-      return <Circle className="w-8 h-8 text-primary" fill="currentColor" />;
-    case "circle":
-      return <Circle className="w-8 h-8 text-primary" />;
-    case "grape":
-      return <Grape className="w-8 h-8 text-primary" />;
-    case "flower":
-      return <Flower2 className="w-8 h-8 text-primary" />;
-    case "banana":
-      return <Banana className="w-8 h-8 text-primary" />;
-    case "cherry":
-      return <Cherry className="w-8 h-8 text-primary" />;
-    case "apple":
-      return <Apple className="w-8 h-8 text-primary" />;
-    default:
-      return <Baby className="w-8 h-8 text-primary" />;
-  }
-};
-
 export const WeekByWeekGuide = ({ currentWeek }: WeekByWeekGuideProps) => {
-  const babySize = getBabySizeForWeek(currentWeek);
+  const babySize = getComparisonForWeek(currentWeek);
+
+  if (!babySize) {
+    return (
+      <div className="text-center p-4">
+        <p className="text-red-500">Please enter a valid week between 4 and 40.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -37,7 +21,6 @@ export const WeekByWeekGuide = ({ currentWeek }: WeekByWeekGuideProps) => {
       
       <div className="bg-white p-6 rounded-lg shadow-md mb-6 animate-fadeIn">
         <div className="flex items-center justify-center gap-4 mb-4">
-          {getIconComponent(babySize.icon)}
           <h3 className="text-2xl font-semibold text-primary">
             Week {currentWeek}: Your baby is the size of a {babySize.size}!
           </h3>
