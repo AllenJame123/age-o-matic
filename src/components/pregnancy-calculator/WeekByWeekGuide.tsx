@@ -1,4 +1,4 @@
-import { Baby, Circle, Grape, Apple, Flower2, Banana, Cherry, Orange } from "lucide-react";
+import { Baby, Circle, Grape, Apple, Flower2, Banana, Cherry } from "lucide-react";
 import { getBabySizeForWeek } from "@/utils/babySize";
 
 interface WeekByWeekGuideProps {
@@ -21,8 +21,6 @@ const getIconComponent = (iconName: string) => {
       return <Banana className="w-8 h-8 text-primary" />;
     case "cherry":
       return <Cherry className="w-8 h-8 text-primary" />;
-    case "orange":
-      return <Orange className="w-8 h-8 text-primary" />;
     case "apple":
       return <Apple className="w-8 h-8 text-primary" />;
     default:
