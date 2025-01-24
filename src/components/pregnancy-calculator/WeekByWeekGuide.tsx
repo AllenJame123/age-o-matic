@@ -103,7 +103,7 @@ export const WeekByWeekGuide = ({ currentWeek }: WeekByWeekGuideProps) => {
                       
                       {size && (
                         <p className="text-sm text-gray-600 mb-2">
-                          Size: {size.measurement}
+                          Size: {size.description}
                         </p>
                       )}
 
