@@ -31,7 +31,7 @@ export const Navigation = () => {
           <div className="hidden md:flex md:space-x-8">
             <Link
               to="/"
-              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
                 location.pathname === "/" 
                   ? "text-primary border-b-2 border-primary" 
                   : "text-neutral-gray"
@@ -41,7 +41,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/difference"
-              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
                 location.pathname === "/difference"
                   ? "text-primary border-b-2 border-primary"
                   : "text-neutral-gray"
@@ -51,7 +51,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/date-calculator"
-              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
                 location.pathname === "/date-calculator"
                   ? "text-primary border-b-2 border-primary"
                   : "text-neutral-gray"
@@ -61,7 +61,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/birthday-countdown"
-              className={`text-lg font-medium transition-all duration-200 hover:text-primary ${
+              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
                 location.pathname === "/birthday-countdown"
                   ? "text-primary border-b-2 border-primary"
                   : "text-neutral-gray"
@@ -82,7 +82,7 @@ export const Navigation = () => {
         <div className="px-2 pt-2 pb-3 space-y-1">
           <Link
             to="/"
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
               location.pathname === "/"
                 ? "bg-soft-purple text-primary"
                 : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
@@ -93,7 +93,7 @@ export const Navigation = () => {
           </Link>
           <Link
             to="/difference"
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
               location.pathname === "/difference"
                 ? "bg-soft-purple text-primary"
                 : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
@@ -104,7 +104,7 @@ export const Navigation = () => {
           </Link>
           <Link
             to="/date-calculator"
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
               location.pathname === "/date-calculator"
                 ? "bg-soft-purple text-primary"
                 : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
@@ -115,7 +115,7 @@ export const Navigation = () => {
           </Link>
           <Link
             to="/birthday-countdown"
-            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 ${
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
               location.pathname === "/birthday-countdown"
                 ? "bg-soft-purple text-primary"
                 : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
