@@ -12,8 +12,8 @@ export const babySizeComparisons: BabySizeComparison[] = [
   { week: 7, size: "blueberry", description: "0.3 inches", icon: "circle" },
   { week: 8, size: "raspberry", description: "0.6 inches", icon: "circle" },
   { week: 9, size: "grape", description: "0.9 inches", icon: "grape" },
-  { week: 10, size: "strawberry", description: "1.2 inches", icon: "fruit" },
-  { week: 11, size: "lime", description: "1.6 inches", icon: "lemon" },
+  { week: 10, size: "strawberry", description: "1.2 inches", icon: "circle" },
+  { week: 11, size: "lime", description: "1.6 inches", icon: "circle" },
   { week: 12, size: "plum", description: "2.1 inches", icon: "apple" },
   // ... continuing with more weeks
 ];

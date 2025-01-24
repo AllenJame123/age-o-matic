@@ -1,4 +1,4 @@
-import { Baby, Circle, Grape, Apple, Lemon } from "lucide-react";
+import { Baby, Circle, Grape, Apple } from "lucide-react";
 import { getBabySizeForWeek } from "@/utils/babySize";
 
 interface WeekByWeekGuideProps {
@@ -15,8 +15,6 @@ const getIconComponent = (iconName: string) => {
       return <Circle className="w-8 h-8 text-primary" />;
     case "grape":
       return <Grape className="w-8 h-8 text-primary" />;
-    case "lemon":
-      return <Lemon className="w-8 h-8 text-primary" />;
     case "apple":
       return <Apple className="w-8 h-8 text-primary" />;
     default:
