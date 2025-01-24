@@ -30,7 +30,7 @@ export const babySizeComparisons: BabySizeComparison[] = [
   { week: 25, size: "cauliflower", description: "13.0-13.6 inches (330-345 mm), 1.4-1.5 lbs (635-680g)", icon: "flower" },
   { week: 26, size: "lettuce", description: "13.6-14.0 inches (345-356 mm), 1.6-1.7 lbs (725-770g)", icon: "flower" },
   { week: 27, size: "cabbage", description: "14.0-14.4 inches (356-366 mm), 1.9-2.0 lbs (860-910g)", icon: "flower" },
-  { week: 28, size: "eggplant", description: "14.4-14.8 inches (366-376 mm), 2.2-2.3 lbs (1.0-1.04kg)", icon: "apple" },
+  { week: 28, size: "eggplant", description: "14.4-14.8 inches (366-376 mm), 2.2-2.3 lbs (1.0-1.04kg)", icon: "flower" },
   { week: 29, size: "butternut squash", description: "14.8-15.2 inches (376-386 mm), 2.5-2.7 lbs (1.13-1.22kg)", icon: "banana" },
   { week: 30, size: "cucumber", description: "15.2-15.7 inches (386-399 mm), 2.9-3.0 lbs (1.31-1.36kg)", icon: "banana" },
   { week: 31, size: "pineapple", description: "15.7-16.2 inches (399-411 mm), 3.3-3.5 lbs (1.5-1.59kg)", icon: "apple" },
