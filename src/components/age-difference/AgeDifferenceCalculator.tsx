@@ -132,7 +132,7 @@ export const AgeDifferenceCalculator = () => {
             <div className="flex justify-center">
               <Button
                 onClick={calculateDifference}
-                className="bg-soft-purple hover:bg-soft-purple/90 text-gray-800"
+                className="bg-primary hover:bg-primary-light text-white"
                 disabled={!firstDate.year || !firstDate.month || !firstDate.day ||
                          !secondDate.year || !secondDate.month || !secondDate.day}
               >
