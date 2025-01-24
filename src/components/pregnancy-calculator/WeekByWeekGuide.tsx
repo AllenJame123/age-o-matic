@@ -23,10 +23,9 @@ export const WeekByWeekGuide = ({ currentWeek }: WeekByWeekGuideProps) => {
       <div className="bg-white p-6 rounded-lg shadow-md mb-6 animate-fadeIn">
         <div className="flex items-center justify-center gap-4 mb-4">
           <h3 className="text-2xl font-semibold text-primary">
-            Week {currentWeek}: Your baby is the size of a {babySize.size}!
+            Week {currentWeek}: Your baby measures {babySize.description}
           </h3>
         </div>
-        <p className="text-center text-gray-600">{babySize.description}</p>
       </div>
 
       <MilestonesAndTips week={currentWeek} />
