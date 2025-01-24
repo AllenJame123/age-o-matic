@@ -7,9 +7,9 @@ interface ResultCardProps {
 }
 
 export const ResultCard = ({ title, value, description }: ResultCardProps) => (
-  <Card className="p-4 text-center bg-white shadow-sm hover:shadow-md transition-shadow">
-    <h3 className="text-sm font-medium text-gray-500 mb-2">{title}</h3>
-    <p className="text-2xl font-bold mb-1">{value}</p>
-    <p className="text-sm text-gray-600">{description}</p>
+  <Card className="p-6 text-center bg-white shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-primary">
+    <h3 className="text-sm font-medium text-soft-charcoal mb-3">{title}</h3>
+    <p className="text-3xl font-bold mb-2 font-display text-primary-dark">{value}</p>
+    <p className="text-sm text-neutral-gray">{description}</p>
   </Card>
 );

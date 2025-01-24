@@ -25,22 +25,20 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#9b87f5",
-          light: "#D6BCFA",
-          dark: "#8B5CF6",
+          DEFAULT: "#0EA5E9",
+          light: "#33C3F0",
+          dark: "#0FA0CE",
           foreground: "#FFFFFF",
         },
         soft: {
-          purple: "#E5DEFF",
-          gray: "#F1F0FB",
-          green: "#F2FCE2",
-          yellow: "#FEF7CD",
-          pink: "#FFDEE2",
           blue: "#D3E4FD",
+          gray: "#F6F6F7",
+          charcoal: "#403E43",
+          silver: "#9F9EA1",
         },
         neutral: {
           gray: "#8E9196",
-          dark: "#222222",
+          dark: "#221F26",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -66,6 +64,9 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
