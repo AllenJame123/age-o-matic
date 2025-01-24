@@ -6,8 +6,8 @@ interface FAQItemProps {
 }
 
 const FAQItem = ({ question, answer }: FAQItemProps) => (
-  <div className="space-y-2">
-    <h3 className="font-semibold text-lg">{question}</h3>
+  <div className="space-y-2 p-4 border-b last:border-b-0">
+    <h3 className="font-semibold text-lg text-primary">{question}</h3>
     <p className="text-gray-600">{answer}</p>
   </div>
 );
@@ -17,7 +17,7 @@ export const FAQ = () => (
     <h2 className="text-2xl font-bold text-center mb-6">
       Frequently Asked Questions
     </h2>
-    <div className="space-y-4">
+    <div className="space-y-6">
       <FAQItem
         question="How is the age calculated?"
         answer="Our calculator uses precise date arithmetic to compute your exact age in various units, including years, months, days, weeks, and hours."
