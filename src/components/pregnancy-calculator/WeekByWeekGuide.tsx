@@ -1,11 +1,46 @@
+import { Baby, Circle, Grape, Apple, Lemon } from "lucide-react";
+import { getBabySizeForWeek } from "@/utils/babySize";
+
 interface WeekByWeekGuideProps {
   currentWeek: number;
 }
 
+const getIconComponent = (iconName: string) => {
+  switch (iconName) {
+    case "baby":
+      return <Baby className="w-8 h-8 text-primary" />;
+    case "dot":
+      return <Circle className="w-8 h-8 text-primary" fill="currentColor" />;
+    case "circle":
+      return <Circle className="w-8 h-8 text-primary" />;
+    case "grape":
+      return <Grape className="w-8 h-8 text-primary" />;
+    case "lemon":
+      return <Lemon className="w-8 h-8 text-primary" />;
+    case "apple":
+      return <Apple className="w-8 h-8 text-primary" />;
+    default:
+      return <Baby className="w-8 h-8 text-primary" />;
+  }
+};
+
 export const WeekByWeekGuide = ({ currentWeek }: WeekByWeekGuideProps) => {
+  const babySize = getBabySizeForWeek(currentWeek);
+
   return (
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-center">Your Pregnancy Journey</h2>
+      
+      <div className="bg-white p-6 rounded-lg shadow-md mb-6 animate-fadeIn">
+        <div className="flex items-center justify-center gap-4 mb-4">
+          {getIconComponent(babySize.icon)}
+          <h3 className="text-2xl font-semibold text-primary">
+            Week {currentWeek}: Your baby is the size of a {babySize.size}!
+          </h3>
+        </div>
+        <p className="text-center text-gray-600">{babySize.description}</p>
+      </div>
+
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <div className="bg-white p-6 rounded-lg shadow-md">
           <h3 className="text-xl font-semibold mb-2">First Trimester</h3>
