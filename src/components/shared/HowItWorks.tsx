@@ -14,9 +14,9 @@ export const HowItWorks = ({ steps }: HowItWorksProps) => (
     <h2 className="text-3xl font-bold text-center text-neutral-dark">
       How It Works
     </h2>
-    <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
+    <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12 relative">
       {steps.map((step, index) => (
-        <div key={index} className="flex flex-col items-center text-center max-w-[250px]">
+        <div key={index} className="flex flex-col items-center text-center max-w-[250px] relative">
           <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
             {index + 1}
           </div>
@@ -27,13 +27,13 @@ export const HowItWorks = ({ steps }: HowItWorksProps) => (
             {step.description}
           </p>
           {index < steps.length - 1 && (
-            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 transform translate-x-1/2">
+            <div className="hidden md:block absolute left-[calc(100%+1rem)] top-6 -translate-y-1/2">
               <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                className="text-primary/30"
+                className="text-primary"
               >
                 <path
                   d="M5 12H19M19 12L12 5M19 12L12 19"

@@ -156,7 +156,7 @@ export const DateCalculatorComponent = () => {
             <div className="flex justify-center">
               <Button
                 onClick={calculateDates}
-                className="bg-soft-purple hover:bg-soft-purple/90 text-gray-800"
+                className="bg-primary hover:bg-primary-light text-white"
                 disabled={!startDate || (["difference", "business"].includes(calculationType) && !endDate)}
               >
                 Calculate
