@@ -2,10 +2,10 @@ import { useState } from "react";
 import { format, differenceInYears, differenceInMonths, differenceInDays, differenceInWeeks, differenceInHours } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ResultCard } from "./age-calculator/ResultCard";
 import { HowItWorks } from "./age-calculator/HowItWorks";
 import { FAQ } from "./age-calculator/FAQ";
+import { DateInput } from "./shared/DateInput";
 
 interface AgeResult {
   years: number;
@@ -21,11 +21,6 @@ const AgeCalculator = () => {
   const [selectedMonth, setSelectedMonth] = useState<string>("");
   const [selectedDay, setSelectedDay] = useState<string>("");
   const [result, setResult] = useState<AgeResult | null>(null);
-
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 150 }, (_, i) => currentYear - i);
-  const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const calculateAge = () => {
     if (!selectedYear || !selectedMonth || !selectedDay) return;
@@ -68,46 +63,16 @@ const AgeCalculator = () => {
 
         <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
           <div className="space-y-6">
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
-              <Select onValueChange={setSelectedYear} value={selectedYear}>
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Year" />
-                </SelectTrigger>
-                <SelectContent>
-                  {years.map((year) => (
-                    <SelectItem key={year} value={year.toString()}>
-                      {year}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <DateInput
+              month={selectedMonth}
+              day={selectedDay}
+              year={selectedYear}
+              onMonthChange={setSelectedMonth}
+              onDayChange={setSelectedDay}
+              onYearChange={setSelectedYear}
+            />
 
-              <Select onValueChange={setSelectedMonth} value={selectedMonth}>
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Month" />
-                </SelectTrigger>
-                <SelectContent>
-                  {months.map((month) => (
-                    <SelectItem key={month} value={month.toString()}>
-                      {format(new Date(2024, month - 1), "MMMM")}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
-              <Select onValueChange={setSelectedDay} value={selectedDay}>
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Day" />
-                </SelectTrigger>
-                <SelectContent>
-                  {days.map((day) => (
-                    <SelectItem key={day} value={day.toString()}>
-                      {day}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-
+            <div className="flex justify-center">
               <Button
                 onClick={calculateAge}
                 className="w-full sm:w-auto bg-primary hover:bg-primary-light text-primary-foreground"
