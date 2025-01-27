@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 const Index = () => {
   const websiteUrl = "https://agecalculator.app";
-  const pageImage = "https://images.unsplash.com/photo-1460925895917-afdab827c52f"; // Calendar/computer themed image
+  const pageImage = "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b"; // Notebook with marker
 
   return (
     <div className="min-h-screen bg-gray-50">
