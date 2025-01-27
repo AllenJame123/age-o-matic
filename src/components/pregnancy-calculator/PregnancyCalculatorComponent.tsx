@@ -52,7 +52,9 @@ export const PregnancyCalculatorComponent = () => {
       <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
         <div className="space-y-6">
           <div className="space-y-2">
-            <Label className="text-center block">First Day of Last Period</Label>
+            <Label className="text-center block text-xl font-semibold text-primary">
+              First Day of Last Period
+            </Label>
             <div className="flex justify-center">
               <div className="border rounded-lg p-2 bg-white w-fit">
                 <Calendar
@@ -76,16 +78,17 @@ export const PregnancyCalculatorComponent = () => {
           </div>
 
           {pregnancyDetails && (
-            <div className="grid gap-4 sm:grid-cols-2 animate-slideUp">
-              <Card className="p-4 bg-soft-blue">
-                <h3 className="font-semibold text-lg mb-1">Current Week</h3>
+            <div className="grid gap-4 sm:grid-cols-3 animate-slideUp">
+              <Card className="p-6 bg-white border-2 border-primary shadow-lg">
+                <h3 className="text-sm text-gray-600 mb-1">Current Week</h3>
                 <p className="text-3xl font-bold text-primary">
-                  Week {pregnancyDetails.currentWeek}
+                  {pregnancyDetails.currentWeek}
                 </p>
-                <p className="text-sm text-gray-600 mt-1">of pregnancy</p>
+                <p className="text-sm text-gray-600 mt-1">weeks of pregnancy</p>
               </Card>
-              <Card className="p-4 bg-soft-blue">
-                <h3 className="font-semibold text-lg mb-1">Due Date</h3>
+              
+              <Card className="p-6 bg-white border-2 border-primary shadow-lg sm:col-span-2">
+                <h3 className="text-sm text-gray-600 mb-1">Due Date</h3>
                 <p className="text-3xl font-bold text-primary">
                   {pregnancyDetails.dueDate.toLocaleDateString('en-US', {
                     month: 'long',
