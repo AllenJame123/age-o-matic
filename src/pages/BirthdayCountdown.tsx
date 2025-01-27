@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 const BirthdayCountdown = () => {
   const websiteUrl = "https://agecalculator.app";
-  const pageImage = "https://images.unsplash.com/photo-1506784365847-bbad939e9335"; // Calendar with red pins
+  const pageImage = "https://images.unsplash.com/photo-1558636508-e0db3814bd1d"; // Birthday decorations image
 
   return (
     <div className="min-h-screen bg-gray-50">
