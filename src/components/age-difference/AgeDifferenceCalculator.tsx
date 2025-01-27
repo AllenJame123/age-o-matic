@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { format, differenceInYears, differenceInMonths, differenceInDays, differenceInWeeks, differenceInHours } from "date-fns";
+import { differenceInYears, differenceInMonths, differenceInDays, differenceInWeeks, differenceInHours } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ResultCard } from "../age-calculator/ResultCard";
+import { DateSelector } from "./DateSelector";
+import { Results } from "./Results";
 import { HowItWorks } from "./HowItWorks";
 import { WhyUseSection } from "./WhyUseSection";
 import { FAQ } from "./FAQ";
+
+interface DateState {
+  year: string;
+  month: string;
+  day: string;
+}
 
 interface AgeResult {
   years: number;
@@ -18,22 +24,17 @@ interface AgeResult {
 }
 
 export const AgeDifferenceCalculator = () => {
-  const [firstDate, setFirstDate] = useState({
+  const [firstDate, setFirstDate] = useState<DateState>({
     year: "",
     month: "",
     day: "",
   });
-  const [secondDate, setSecondDate] = useState({
+  const [secondDate, setSecondDate] = useState<DateState>({
     year: "",
     month: "",
     day: "",
   });
   const [result, setResult] = useState<AgeResult | null>(null);
-
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 150 }, (_, i) => currentYear - i);
-  const months = Array.from({ length: 12 }, (_, i) => i + 1);
-  const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const calculateDifference = () => {
     if (!firstDate.year || !firstDate.month || !firstDate.day || 
@@ -67,52 +68,6 @@ export const AgeDifferenceCalculator = () => {
     });
   };
 
-  const DateInput = ({ label, date, setDate }: any) => (
-    <div className="space-y-4">
-      <h3 className="font-medium text-gray-700 text-center">{label}</h3>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Select onValueChange={(value) => setDate({ ...date, year: value })} value={date.year}>
-          <SelectTrigger className="w-[140px]">
-            <SelectValue placeholder="Year" />
-          </SelectTrigger>
-          <SelectContent>
-            {years.map((year) => (
-              <SelectItem key={year} value={year.toString()}>
-                {year}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select onValueChange={(value) => setDate({ ...date, month: value })} value={date.month}>
-          <SelectTrigger className="w-[140px]">
-            <SelectValue placeholder="Month" />
-          </SelectTrigger>
-          <SelectContent>
-            {months.map((month) => (
-              <SelectItem key={month} value={month.toString()}>
-                {format(new Date(2024, month - 1), "MMMM")}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        <Select onValueChange={(value) => setDate({ ...date, day: value })} value={date.day}>
-          <SelectTrigger className="w-[140px]">
-            <SelectValue placeholder="Day" />
-          </SelectTrigger>
-          <SelectContent>
-            {days.map((day) => (
-              <SelectItem key={day} value={day.toString()}>
-                {day}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-soft-gray p-4 sm:p-6 lg:p-8 animate-fadeIn">
       <div className="max-w-4xl mx-auto space-y-8">
@@ -127,12 +82,8 @@ export const AgeDifferenceCalculator = () => {
 
         <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
           <div className="space-y-8 flex flex-col items-center">
-            <div className="w-full max-w-2xl">
-              <DateInput label="First Date" date={firstDate} setDate={setFirstDate} />
-            </div>
-            <div className="w-full max-w-2xl">
-              <DateInput label="Second Date" date={secondDate} setDate={setSecondDate} />
-            </div>
+            <DateSelector label="First Date" date={firstDate} setDate={setFirstDate} />
+            <DateSelector label="Second Date" date={secondDate} setDate={setSecondDate} />
 
             <Button
               onClick={calculateDifference}
@@ -143,25 +94,7 @@ export const AgeDifferenceCalculator = () => {
               Calculate Difference
             </Button>
 
-            {result && (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-slideUp w-full">
-                <ResultCard
-                  title="Age Difference"
-                  value={`${result.years} years, ${result.months} months, ${result.days} days`}
-                  description="Precise age difference"
-                />
-                <ResultCard
-                  title="Total Days"
-                  value={result.totalDays.toLocaleString()}
-                  description="Number of days between dates"
-                />
-                <ResultCard
-                  title="Other Units"
-                  value={`${result.weeks.toLocaleString()} weeks`}
-                  description={`${result.hours.toLocaleString()} hours`}
-                />
-              </div>
-            )}
+            {result && <Results result={result} />}
           </div>
         </Card>
 
