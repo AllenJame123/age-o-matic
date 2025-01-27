@@ -72,7 +72,7 @@ export const LeapYearCalculatorComponent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-soft-gray p-4 sm:p-6 lg:p-8 animate-fadeIn">
+    <div className="p-4 sm:p-6 lg:p-8 animate-fadeIn">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
