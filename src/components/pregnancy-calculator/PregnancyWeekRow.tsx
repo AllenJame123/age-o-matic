@@ -24,9 +24,9 @@ export const PregnancyWeekRow = ({ week, currentWeek, getDateForWeek }: Pregnanc
         {format(getDateForWeek(week.week), "d MMM yyyy")}
       </TableCell>
       <TableCell className="whitespace-nowrap">Week {week.week}</TableCell>
-      <TableCell className="max-w-[200px] sm:max-w-none">{week.development}</TableCell>
+      <TableCell>{week.development}</TableCell>
       <TableCell className="whitespace-nowrap">{week.size}</TableCell>
-      <TableCell className="max-w-[200px] sm:max-w-none">{week.procedures}</TableCell>
+      <TableCell>{week.procedures}</TableCell>
     </TableRow>
   );
 };

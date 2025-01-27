@@ -24,20 +24,60 @@ export const WeekByWeekGuide = ({ currentWeek, lastPeriodDate }: WeekByWeekGuide
       
       <div className="w-full overflow-hidden rounded-md border">
         <ScrollArea className="h-[600px] w-full">
-          <div className="min-w-[600px]">
-            <Table>
-              <PregnancyTableHeader />
-              <TableBody>
+          <div className="min-w-[300px] lg:min-w-[600px]">
+            <div className="block sm:hidden">
+              {/* Mobile view */}
+              <div className="divide-y">
                 {pregnancyData.map((week) => (
-                  <PregnancyWeekRow
-                    key={week.week}
-                    week={week}
-                    currentWeek={currentWeek}
-                    getDateForWeek={getDateForWeek}
-                  />
+                  <div 
+                    key={week.week} 
+                    className={`p-4 space-y-2 ${
+                      currentWeek === week.week ? "bg-primary/10 font-bold" : ""
+                    }`}
+                  >
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium">Week {week.week}</span>
+                      <span className="text-sm text-neutral-gray">{week.trimester}</span>
+                    </div>
+                    <div className="grid grid-cols-1 gap-2 text-sm">
+                      <div>
+                        <div className="font-medium text-neutral-dark">Date:</div>
+                        <div>{format(getDateForWeek(week.week), "d MMM yyyy")}</div>
+                      </div>
+                      <div>
+                        <div className="font-medium text-neutral-dark">Development:</div>
+                        <div className="text-left">{week.development}</div>
+                      </div>
+                      <div>
+                        <div className="font-medium text-neutral-dark">Size:</div>
+                        <div>{week.size}</div>
+                      </div>
+                      <div>
+                        <div className="font-medium text-neutral-dark">Procedures:</div>
+                        <div className="text-left">{week.procedures}</div>
+                      </div>
+                    </div>
+                  </div>
                 ))}
-              </TableBody>
-            </Table>
+              </div>
+            </div>
+            
+            {/* Desktop view */}
+            <div className="hidden sm:block">
+              <Table>
+                <PregnancyTableHeader />
+                <TableBody>
+                  {pregnancyData.map((week) => (
+                    <PregnancyWeekRow
+                      key={week.week}
+                      week={week}
+                      currentWeek={currentWeek}
+                      getDateForWeek={getDateForWeek}
+                    />
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
         </ScrollArea>
       </div>
