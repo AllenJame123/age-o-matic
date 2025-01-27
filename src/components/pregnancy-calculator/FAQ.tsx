@@ -51,18 +51,6 @@ export const FAQ = () => {
           </AccordionContent>
         </AccordionItem>
 
-        <AccordionItem value="item-6">
-          <AccordionTrigger>What are the key screening tests during pregnancy?</AccordionTrigger>
-          <AccordionContent>
-            Key screening tests include:
-            • First Trimester (Weeks 11-13): NT scan and blood tests
-            • Second Trimester (Weeks 15-20): Quad screen or anatomy scan
-            • Third Trimester (Weeks 24-28): Glucose screening
-            • Late Pregnancy (Weeks 35-37): Group B strep test
-            Discuss with your healthcare provider which tests are recommended for your specific situation.
-          </AccordionContent>
-        </AccordionItem>
-
         <AccordionItem value="item-7">
           <AccordionTrigger>How accurate are the baby size and weight estimates?</AccordionTrigger>
           <AccordionContent>
