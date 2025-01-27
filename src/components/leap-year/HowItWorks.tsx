@@ -4,16 +4,16 @@ export const HowItWorks = () => (
   <SharedHowItWorks
     steps={[
       {
-        title: "Enter a Year",
-        description: "Type any year you want to check in the input field",
+        title: "Select a Year",
+        description: "Choose any year from the dropdown menu to check if it's a leap year",
       },
       {
-        title: "Click Calculate",
-        description: "Press the button to determine if it's a leap year",
+        title: "Get Results",
+        description: "View whether it's a leap year and see the next three upcoming leap years",
       },
       {
-        title: "View Result",
-        description: "See whether the year is a leap year and its number of days",
+        title: "Plan Ahead",
+        description: "Use the future leap year information for long-term date planning",
       },
     ]}
   />

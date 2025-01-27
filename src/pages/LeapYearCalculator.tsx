@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Navigation } from "@/components/Navigation";
 import { LeapYearCalculatorComponent } from "@/components/leap-year/LeapYearCalculatorComponent";
 import { HowItWorks } from "@/components/leap-year/HowItWorks";
+import { WhyUseSection } from "@/components/leap-year/WhyUseSection";
 import { FAQ } from "@/components/leap-year/FAQ";
 
 const LeapYearCalculator = () => {
@@ -27,11 +28,9 @@ const LeapYearCalculator = () => {
       <div className="min-h-screen bg-background">
         <Navigation />
         <main className="container max-w-4xl mx-auto px-4 py-8 space-y-8">
-          <h1 className="text-4xl font-bold text-center text-neutral-dark mb-8">
-            Leap Year Calculator
-          </h1>
           <LeapYearCalculatorComponent />
           <HowItWorks />
+          <WhyUseSection />
           <FAQ />
         </main>
       </div>
