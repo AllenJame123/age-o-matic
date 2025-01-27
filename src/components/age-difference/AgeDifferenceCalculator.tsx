@@ -69,8 +69,8 @@ export const AgeDifferenceCalculator = () => {
 
   const DateInput = ({ label, date, setDate }: any) => (
     <div className="space-y-4">
-      <h3 className="font-medium text-gray-700">{label}</h3>
-      <div className="flex flex-col sm:flex-row gap-4">
+      <h3 className="font-medium text-gray-700 text-center">{label}</h3>
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Select onValueChange={(value) => setDate({ ...date, year: value })} value={date.year}>
           <SelectTrigger className="w-[140px]">
             <SelectValue placeholder="Year" />
@@ -126,23 +126,25 @@ export const AgeDifferenceCalculator = () => {
         </div>
 
         <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
-          <div className="space-y-8">
-            <DateInput label="First Date" date={firstDate} setDate={setFirstDate} />
-            <DateInput label="Second Date" date={secondDate} setDate={setSecondDate} />
-
-            <div className="flex justify-center">
-              <Button
-                onClick={calculateDifference}
-                className="bg-primary hover:bg-primary-light text-white"
-                disabled={!firstDate.year || !firstDate.month || !firstDate.day ||
-                         !secondDate.year || !secondDate.month || !secondDate.day}
-              >
-                Calculate Difference
-              </Button>
+          <div className="space-y-8 flex flex-col items-center">
+            <div className="w-full max-w-2xl">
+              <DateInput label="First Date" date={firstDate} setDate={setFirstDate} />
+            </div>
+            <div className="w-full max-w-2xl">
+              <DateInput label="Second Date" date={secondDate} setDate={setSecondDate} />
             </div>
 
+            <Button
+              onClick={calculateDifference}
+              className="bg-primary hover:bg-primary-light text-white"
+              disabled={!firstDate.year || !firstDate.month || !firstDate.day ||
+                       !secondDate.year || !secondDate.month || !secondDate.day}
+            >
+              Calculate Difference
+            </Button>
+
             {result && (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-slideUp">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-slideUp w-full">
                 <ResultCard
                   title="Age Difference"
                   value={`${result.years} years, ${result.months} months, ${result.days} days`}
