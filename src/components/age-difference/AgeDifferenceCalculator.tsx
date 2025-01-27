@@ -2,10 +2,10 @@ import { useState } from "react";
 import { format, differenceInYears, differenceInMonths, differenceInDays, differenceInWeeks, differenceInHours } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ResultCard } from "../age-calculator/ResultCard";
 import { HowItWorks } from "./HowItWorks";
 import { FAQ } from "./FAQ";
-import { DateInput } from "../shared/DateInput";
 
 interface AgeResult {
   years: number;
@@ -28,6 +28,11 @@ export const AgeDifferenceCalculator = () => {
     day: "",
   });
   const [result, setResult] = useState<AgeResult | null>(null);
+
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 150 }, (_, i) => currentYear - i);
+  const months = Array.from({ length: 12 }, (_, i) => i + 1);
+  const days = Array.from({ length: 31 }, (_, i) => i + 1);
 
   const calculateDifference = () => {
     if (!firstDate.year || !firstDate.month || !firstDate.day || 
@@ -61,6 +66,52 @@ export const AgeDifferenceCalculator = () => {
     });
   };
 
+  const DateInput = ({ label, date, setDate }: any) => (
+    <div className="space-y-4">
+      <h3 className="font-medium text-gray-700">{label}</h3>
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Select onValueChange={(value) => setDate({ ...date, year: value })} value={date.year}>
+          <SelectTrigger className="w-[140px]">
+            <SelectValue placeholder="Year" />
+          </SelectTrigger>
+          <SelectContent>
+            {years.map((year) => (
+              <SelectItem key={year} value={year.toString()}>
+                {year}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        <Select onValueChange={(value) => setDate({ ...date, month: value })} value={date.month}>
+          <SelectTrigger className="w-[140px]">
+            <SelectValue placeholder="Month" />
+          </SelectTrigger>
+          <SelectContent>
+            {months.map((month) => (
+              <SelectItem key={month} value={month.toString()}>
+                {format(new Date(2024, month - 1), "MMMM")}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        <Select onValueChange={(value) => setDate({ ...date, day: value })} value={date.day}>
+          <SelectTrigger className="w-[140px]">
+            <SelectValue placeholder="Day" />
+          </SelectTrigger>
+          <SelectContent>
+            {days.map((day) => (
+              <SelectItem key={day} value={day.toString()}>
+                {day}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-soft-gray p-4 sm:p-6 lg:p-8 animate-fadeIn">
       <div className="max-w-4xl mx-auto space-y-8">
@@ -75,29 +126,8 @@ export const AgeDifferenceCalculator = () => {
 
         <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
           <div className="space-y-8">
-            <div className="space-y-4">
-              <h3 className="font-medium text-gray-700">First Date</h3>
-              <DateInput
-                month={firstDate.month}
-                day={firstDate.day}
-                year={firstDate.year}
-                onMonthChange={(value) => setFirstDate({ ...firstDate, month: value })}
-                onDayChange={(value) => setFirstDate({ ...firstDate, day: value })}
-                onYearChange={(value) => setFirstDate({ ...firstDate, year: value })}
-              />
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="font-medium text-gray-700">Second Date</h3>
-              <DateInput
-                month={secondDate.month}
-                day={secondDate.day}
-                year={secondDate.year}
-                onMonthChange={(value) => setSecondDate({ ...secondDate, month: value })}
-                onDayChange={(value) => setSecondDate({ ...secondDate, day: value })}
-                onYearChange={(value) => setSecondDate({ ...secondDate, year: value })}
-              />
-            </div>
+            <DateInput label="First Date" date={firstDate} setDate={setFirstDate} />
+            <DateInput label="Second Date" date={secondDate} setDate={setSecondDate} />
 
             <div className="flex justify-center">
               <Button
