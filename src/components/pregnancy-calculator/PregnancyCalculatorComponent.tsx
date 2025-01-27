@@ -93,8 +93,11 @@ export const PregnancyCalculatorComponent = () => {
         </div>
       </Card>
 
-      {pregnancyDetails && (
-        <WeekByWeekGuide currentWeek={pregnancyDetails.currentWeek} />
+      {pregnancyDetails && lastPeriodDate && (
+        <WeekByWeekGuide 
+          currentWeek={pregnancyDetails.currentWeek} 
+          lastPeriodDate={lastPeriodDate}
+        />
       )}
 
       <HowItWorks />
