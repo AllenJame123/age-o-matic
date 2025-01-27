@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getComparisonForWeek } from "@/utils/babySize";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface WeekByWeekGuideProps {
@@ -331,11 +330,11 @@ export const WeekByWeekGuide = ({ currentWeek, lastPeriodDate }: WeekByWeekGuide
             {pregnancyData.map((week) => (
               <TableRow 
                 key={week.week}
-                className={currentWeek === week.week ? "bg-primary/10" : ""}
+                className={currentWeek === week.week ? "bg-primary/10 font-bold" : ""}
               >
                 <TableCell>{week.trimester}</TableCell>
                 <TableCell>
-                  {format(getDateForWeek(week.week), "dd/MM/yyyy")}
+                  {format(getDateForWeek(week.week), "d MMM yyyy")}
                 </TableCell>
                 <TableCell>Week {week.week}</TableCell>
                 <TableCell>{week.development}</TableCell>
