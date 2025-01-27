@@ -2,43 +2,47 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { HowItWorks } from "./HowItWorks";
 import { FAQ } from "./FAQ";
 import { ResultCard } from "../age-calculator/ResultCard";
 import { toast } from "sonner";
+import { DateInput } from "../birthday-countdown/DateInput";
+import { addYears, differenceInDays, format } from "date-fns";
 
 export const RetirementCalculatorComponent = () => {
-  const [currentAge, setCurrentAge] = useState<string>("");
-  const [retirementAge, setRetirementAge] = useState<string>("");
+  const [month, setMonth] = useState<string>();
+  const [day, setDay] = useState<string>();
+  const [year, setYear] = useState<string>();
+  const [retirementAge, setRetirementAge] = useState<string>("65");
   const [result, setResult] = useState<{
-    yearsLeft: number;
-    monthsLeft: number;
-    daysLeft: number;
+    retirementDate: string;
+    daysToRetire: number;
+    daysToWork: number;
   } | null>(null);
 
   const calculateRetirement = () => {
-    if (!currentAge || !retirementAge) {
+    if (!month || !day || !year || !retirementAge) {
       toast.error("Please fill in all fields");
       return;
     }
 
-    const current = parseInt(currentAge);
-    const retirement = parseInt(retirementAge);
-
-    if (current >= retirement) {
-      toast.error("Retirement age must be greater than current age");
-      return;
-    }
-
-    const yearsLeft = retirement - current;
-    const monthsLeft = yearsLeft * 12;
-    const daysLeft = yearsLeft * 365;
+    const birthDate = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+    const today = new Date();
+    
+    // Calculate retirement date by adding retirement age to birth date
+    const retirementDate = addYears(birthDate, parseInt(retirementAge));
+    
+    // Calculate days until retirement
+    const daysToRetire = differenceInDays(retirementDate, today);
+    
+    // Calculate remaining working days (excluding weekends approximately)
+    const daysToWork = Math.round(daysToRetire * (5/7)); // Approximate working days
 
     setResult({
-      yearsLeft,
-      monthsLeft,
-      daysLeft,
+      retirementDate: format(retirementDate, 'yyyy MMMM dd'),
+      daysToRetire,
+      daysToWork,
     });
   };
 
@@ -50,34 +54,39 @@ export const RetirementCalculatorComponent = () => {
             Retirement Age Calculator
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Plan your retirement by calculating the time left until your desired retirement age
+            Plan your retirement by calculating when you can retire based on your birth date
           </p>
         </div>
 
         <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
           <div className="space-y-6">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-6">
               <div className="space-y-2">
-                <Label>Current Age</Label>
-                <Input
-                  type="number"
-                  min="0"
-                  max="100"
-                  value={currentAge}
-                  onChange={(e) => setCurrentAge(e.target.value)}
-                  placeholder="Enter your current age"
+                <Label className="text-left block">Enter your birthday</Label>
+                <DateInput
+                  month={month}
+                  day={day}
+                  year={year}
+                  onMonthChange={setMonth}
+                  onDayChange={setDay}
+                  onYearChange={setYear}
                 />
               </div>
+              
               <div className="space-y-2">
-                <Label>Desired Retirement Age</Label>
-                <Input
-                  type="number"
-                  min="0"
-                  max="100"
-                  value={retirementAge}
-                  onChange={(e) => setRetirementAge(e.target.value)}
-                  placeholder="Enter desired retirement age"
-                />
+                <Label className="text-left block">Choose your retirement age</Label>
+                <Select value={retirementAge} onValueChange={setRetirementAge}>
+                  <SelectTrigger className="bg-soft-gray border-soft-purple focus:ring-primary">
+                    <SelectValue placeholder="Select retirement age" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Array.from({ length: 51 }, (_, i) => i + 50).map((age) => (
+                      <SelectItem key={age} value={age.toString()}>
+                        {age} years
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
 
@@ -86,26 +95,26 @@ export const RetirementCalculatorComponent = () => {
                 onClick={calculateRetirement}
                 className="bg-primary hover:bg-primary-light text-white"
               >
-                Calculate
+                Calculate Retirement Age
               </Button>
             </div>
 
             {result && (
-              <div className="grid gap-4 sm:grid-cols-3 animate-slideUp">
+              <div className="space-y-4 animate-slideUp">
                 <ResultCard
-                  title="Years Until Retirement"
-                  value={result.yearsLeft.toString()}
-                  description="Total years left"
+                  title="Your retirement date is"
+                  value={result.retirementDate}
+                  description="Based on your birth date and chosen retirement age"
                 />
                 <ResultCard
-                  title="Months Until Retirement"
-                  value={result.monthsLeft.toString()}
-                  description="Total months left"
+                  title="How many days to retire?"
+                  value={`${result.daysToRetire} days`}
+                  description="Total days until retirement"
                 />
                 <ResultCard
-                  title="Days Until Retirement"
-                  value={result.daysLeft.toString()}
-                  description="Total days left"
+                  title="How many more days to work?"
+                  value={`${result.daysToWork} days`}
+                  description="Approximate working days left (excluding weekends)"
                 />
               </div>
             )}
