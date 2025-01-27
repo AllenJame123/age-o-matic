@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ResultCard } from "../age-calculator/ResultCard";
 import { HowItWorks } from "./HowItWorks";
+import { WhyUseSection } from "./WhyUseSection";
 import { FAQ } from "./FAQ";
 
 interface AgeResult {
@@ -163,6 +164,7 @@ export const AgeDifferenceCalculator = () => {
         </Card>
 
         <HowItWorks />
+        <WhyUseSection />
         <FAQ />
       </div>
     </div>
