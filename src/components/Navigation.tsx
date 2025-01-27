@@ -9,16 +9,16 @@ export const Navigation = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   
   return (
-    <nav className="bg-white shadow-lg mb-8 relative">
-      <div className="max-w-4xl mx-auto px-4">
+    <nav className="bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-2">
-            <Calendar className="h-8 w-8 text-primary" />
+            <Calendar className="h-6 w-6 text-primary" />
           </div>
           
           <button
             onClick={toggleMenu}
-            className="md:hidden p-2 rounded-md text-neutral-gray hover:text-neutral-dark hover:bg-soft-purple focus:outline-none focus:ring-2 focus:ring-primary"
+            className="md:hidden p-2 rounded-md text-neutral-gray hover:text-neutral-dark hover:bg-soft-gray focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <span className="sr-only">Open menu</span>
             {isMenuOpen ? (
@@ -31,9 +31,9 @@ export const Navigation = () => {
           <div className="hidden md:flex md:space-x-8">
             <Link
               to="/"
-              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/" 
-                  ? "text-primary border-b-2 border-primary" 
+                  ? "text-primary" 
                   : "text-neutral-gray"
               }`}
             >
@@ -41,9 +41,9 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/difference"
-              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/difference"
-                  ? "text-primary border-b-2 border-primary"
+                  ? "text-primary"
                   : "text-neutral-gray"
               }`}
             >
@@ -51,9 +51,9 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/date-calculator"
-              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/date-calculator"
-                  ? "text-primary border-b-2 border-primary"
+                  ? "text-primary"
                   : "text-neutral-gray"
               }`}
             >
@@ -61,9 +61,9 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/birthday-countdown"
-              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/birthday-countdown"
-                  ? "text-primary border-b-2 border-primary"
+                  ? "text-primary"
                   : "text-neutral-gray"
               }`}
             >
@@ -71,9 +71,9 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/pregnancy-calculator"
-              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/pregnancy-calculator"
-                  ? "text-primary border-b-2 border-primary"
+                  ? "text-primary"
                   : "text-neutral-gray"
               }`}
             >
@@ -81,9 +81,9 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/leap-year-calculator"
-              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/leap-year-calculator"
-                  ? "text-primary border-b-2 border-primary"
+                  ? "text-primary"
                   : "text-neutral-gray"
               }`}
             >
