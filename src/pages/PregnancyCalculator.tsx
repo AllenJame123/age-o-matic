@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 const PregnancyCalculator = () => {
   const websiteUrl = "https://agecalculator.app";
-  const pageImage = "https://images.unsplash.com/photo-1506784365847-bbad939e9335"; // Calendar with red pins
+  const pageImage = "https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // Calendar with red push pins
 
   return (
     <div className="min-h-screen bg-soft-gray">
