@@ -30,10 +30,6 @@ export const FAQ = () => (
         question="How accurate are the calculations?"
         answer="The calculator provides precise results based on standard pregnancy duration. However, every pregnancy is unique, and your healthcare provider may adjust dates based on ultrasound measurements and other factors."
       />
-      <FAQItem
-        question="What about medical procedures during pregnancy?"
-        answer="Medical Procedures: The timing of tests may vary based on individual circumstances and healthcare provider recommendations."
-      />
     </div>
   </Card>
 );
