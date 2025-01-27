@@ -49,8 +49,6 @@ export const PregnancyCalculatorComponent = () => {
         </p>
       </div>
 
-      <WhyUseSection />
-
       <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
         <div className="space-y-6">
           <div className="space-y-2">
@@ -108,6 +106,7 @@ export const PregnancyCalculatorComponent = () => {
       )}
 
       <HowItWorks />
+      <WhyUseSection />
       <FAQ />
     </div>
   );
