@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 
 export const LeapYearCalculatorComponent = () => {
@@ -14,6 +20,29 @@ export const LeapYearCalculatorComponent = () => {
     if (year % 100 !== 0) return true;
     if (year % 400 !== 0) return false;
     return true;
+  };
+
+  const getNextThreeLeapYears = (startYear: number): number[] => {
+    const nextLeapYears: number[] = [];
+    let currentYear = startYear + 1;
+    
+    while (nextLeapYears.length < 3) {
+      if (isLeapYear(currentYear)) {
+        nextLeapYears.push(currentYear);
+      }
+      currentYear++;
+    }
+    
+    return nextLeapYears;
+  };
+
+  const generateYearOptions = () => {
+    const currentYear = new Date().getFullYear();
+    const years = [];
+    for (let i = currentYear - 100; i <= currentYear + 100; i++) {
+      years.push(i);
+    }
+    return years;
   };
 
   const handleCalculate = () => {
@@ -29,10 +58,12 @@ export const LeapYearCalculatorComponent = () => {
     }
 
     const isLeap = isLeapYear(yearNum);
+    const nextLeapYears = getNextThreeLeapYears(yearNum);
+    
     setResult(
-      isLeap
-        ? `${yearNum} is a leap year! It has 366 days.`
-        : `${yearNum} is not a leap year. It has 365 days.`
+      `${yearNum} ${isLeap ? "is" : "is not"} a leap year! ${
+        isLeap ? "It has 366 days." : "It has 365 days."
+      }\n\nNext three leap years after ${yearNum}: ${nextLeapYears.join(", ")}`
     );
   };
 
@@ -41,16 +72,23 @@ export const LeapYearCalculatorComponent = () => {
       <div className="space-y-4">
         <div className="space-y-2">
           <label htmlFor="year" className="block text-sm font-medium text-neutral-dark">
-            Enter Year
+            Select Year
           </label>
-          <Input
-            id="year"
-            type="number"
+          <Select
             value={year}
-            onChange={(e) => setYear(e.target.value)}
-            placeholder="e.g., 2024"
-            className="w-full"
-          />
+            onValueChange={(value) => setYear(value)}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select a year" />
+            </SelectTrigger>
+            <SelectContent>
+              {generateYearOptions().map((yearOption) => (
+                <SelectItem key={yearOption} value={yearOption.toString()}>
+                  {yearOption}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
         
         <Button
@@ -62,7 +100,7 @@ export const LeapYearCalculatorComponent = () => {
         </Button>
 
         {result && (
-          <div className="mt-4 p-4 bg-soft-blue rounded-lg">
+          <div className="mt-4 p-4 bg-soft-blue rounded-lg whitespace-pre-line">
             <p className="text-center text-lg font-medium text-neutral-dark">
               {result}
             </p>
