@@ -14,6 +14,17 @@ interface TrimesterSection {
   description: string;
 }
 
+// Fallback data from medical guidelines
+const fallbackData: Record<number, string> = {
+  25: "Your baby's hair pattern is established, and their skin is becoming pinker and less wrinkled as they gain weight. The blood vessels in their lungs are developing to prepare for breathing.",
+  26: "Your baby's eyes begin to open this week. Their brain is developing rapidly, and they're getting bigger and stronger every day. They can now respond to sounds from the outside world.",
+  27: "This marks the last week of the second trimester. Your baby's brain tissue continues to develop, and they're practicing breathing movements. They can also hiccup, which you might feel!",
+  28: "Your baby's brain is developing rapidly, with billions of neurons being formed. They can blink their eyes and are practicing breathing movements.",
+  29: "Your baby is growing more fat under their skin, making it less wrinkled. Their muscles and lungs are maturing, and they're practicing breathing movements.",
+  30: "Your baby's brain is growing rapidly, and they're developing more fat under their skin. They can now turn their head from side to side.",
+  // ... Add data for other weeks as needed
+};
+
 const trimesterSections: TrimesterSection[] = [
   {
     title: "First Trimester",
@@ -40,10 +51,13 @@ const fetchWeekDetails = async (week: number) => {
     const data = await response.json();
     const pages = data.query.pages;
     const pageId = Object.keys(pages)[0];
-    return pages[pageId].extract || null;
+    const wikiData = pages[pageId].extract;
+    
+    // Return fallback data if wiki data is not available
+    return wikiData || fallbackData[week] || `Week ${week} focuses on continued growth and development of your baby.`;
   } catch (error) {
     console.error(`Error fetching week ${week} details:`, error);
-    return null;
+    return fallbackData[week] || `Week ${week} focuses on continued growth and development of your baby.`;
   }
 }
 
@@ -108,7 +122,7 @@ export const WeekByWeekGuide = ({ currentWeek }: WeekByWeekGuideProps) => {
                       )}
 
                       <p className="text-gray-700">
-                        {weekData?.details || "Development information not available for this week."}
+                        {weekData?.details}
                       </p>
                     </Card>
                   );
