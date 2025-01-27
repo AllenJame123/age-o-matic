@@ -19,6 +19,10 @@ export const FAQ = () => (
     </h2>
     <div className="space-y-6">
       <FAQItem
+        question="How to check if a given year is a leap year?"
+        answer="While there is no leap year formula, there is a simple algorithm: 1) Check if the year is divisible by 4 - if not, it's not a leap year. 2) If divisible by 4, check if it's divisible by 100 - if not, it is a leap year. 3) If divisible by 100, check if it's divisible by 400 - if yes, it is a leap year; if not, it isn't. For example, if a year isn't evenly divisible by 4, it's a common year. Our calculator makes this process simple and can also help compute leap years in a given range."
+      />
+      <FAQItem
         question="What makes a year a leap year?"
         answer="A year is a leap year if it's divisible by 4. However, if it's also divisible by 100, it must be divisible by 400 to be a leap year. For example, 2000 was a leap year, but 1900 was not."
       />
