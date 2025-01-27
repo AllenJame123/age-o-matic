@@ -6,7 +6,7 @@ import {
 
 export const PregnancyTableHeader = () => {
   return (
-    <TableHeader className="sticky top-0 bg-white">
+    <TableHeader className="sticky top-0 bg-white shadow-sm z-10">
       <TableRow>
         <TableHead className="whitespace-nowrap">Trimester</TableHead>
         <TableHead className="whitespace-nowrap">Date</TableHead>
