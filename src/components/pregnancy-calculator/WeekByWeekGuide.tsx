@@ -36,24 +36,24 @@ export const WeekByWeekGuide = ({ currentWeek, lastPeriodDate }: WeekByWeekGuide
                     }`}
                   >
                     <div className="flex justify-between items-center">
-                      <span className="font-medium">Week {week.week}</span>
+                      <span className="font-bold text-lg text-primary">Week {week.week}</span>
                       <span className="text-sm text-neutral-gray">{week.trimester}</span>
                     </div>
                     <div className="grid grid-cols-1 gap-2 text-sm">
                       <div>
-                        <div className="font-medium text-neutral-dark">Date:</div>
+                        <div className="font-bold text-primary-dark">Date:</div>
                         <div>{format(getDateForWeek(week.week), "d MMM yyyy")}</div>
                       </div>
                       <div>
-                        <div className="font-medium text-neutral-dark">Development:</div>
+                        <div className="font-bold text-primary-dark">Development:</div>
                         <div className="text-left">{week.development}</div>
                       </div>
                       <div>
-                        <div className="font-medium text-neutral-dark">Size:</div>
+                        <div className="font-bold text-primary-dark">Size:</div>
                         <div>{week.size}</div>
                       </div>
                       <div>
-                        <div className="font-medium text-neutral-dark">Procedures:</div>
+                        <div className="font-bold text-primary-dark">Procedures:</div>
                         <div className="text-left">{week.procedures}</div>
                       </div>
                     </div>
