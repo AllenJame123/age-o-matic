@@ -62,6 +62,20 @@ export const FAQ = () => {
             Discuss with your healthcare provider which tests are recommended for your specific situation.
           </AccordionContent>
         </AccordionItem>
+
+        <AccordionItem value="item-7">
+          <AccordionTrigger>How accurate are the baby size and weight estimates?</AccordionTrigger>
+          <AccordionContent>
+            Baby size and weight estimates are approximate ranges and can vary significantly depending on several factors including genetics, maternal health, nutrition, and other individual circumstances. Your healthcare provider will monitor your baby's specific growth pattern through regular check-ups and ultrasounds to ensure healthy development.
+          </AccordionContent>
+        </AccordionItem>
+
+        <AccordionItem value="item-8">
+          <AccordionTrigger>Are the medical procedure timelines fixed?</AccordionTrigger>
+          <AccordionContent>
+            The timing of medical procedures and screening tests can vary based on individual circumstances, healthcare provider recommendations, and local medical guidelines. Some factors that might affect the timing include your age, medical history, risk factors, and specific pregnancy conditions. Always follow your healthcare provider's personalized schedule for your pregnancy care.
+          </AccordionContent>
+        </AccordionItem>
       </Accordion>
     </Card>
   );
