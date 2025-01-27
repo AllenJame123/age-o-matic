@@ -3,6 +3,9 @@ import { PregnancyCalculatorComponent } from "@/components/pregnancy-calculator/
 import { Helmet } from "react-helmet";
 
 const PregnancyCalculator = () => {
+  const websiteUrl = "https://agecalculator.app";
+  const pageImage = "https://images.unsplash.com/photo-1649972904349-6e44c42644a7";
+
   return (
     <div className="min-h-screen bg-soft-gray">
       <Helmet>
@@ -15,6 +18,20 @@ const PregnancyCalculator = () => {
           name="keywords" 
           content="pregnancy calculator, pregnancy week calculator, pregnancy age, pregnancy timeline" 
         />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${websiteUrl}/pregnancy-calculator`} />
+        <meta property="og:title" content="Pregnancy Calculator - Track Your Pregnancy Week by Week" />
+        <meta property="og:description" content="Calculate your pregnancy age, estimated due date, and track your baby's development week by week with our free pregnancy calculator." />
+        <meta property="og:image" content={pageImage} />
+
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={`${websiteUrl}/pregnancy-calculator`} />
+        <meta property="twitter:title" content="Pregnancy Calculator - Track Your Pregnancy Week by Week" />
+        <meta property="twitter:description" content="Calculate your pregnancy age, estimated due date, and track your baby's development week by week with our free pregnancy calculator." />
+        <meta property="twitter:image" content={pageImage} />
       </Helmet>
       <Navigation />
       <div className="p-4 sm:p-6 lg:p-8 animate-fadeIn">
