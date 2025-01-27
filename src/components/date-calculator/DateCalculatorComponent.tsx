@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Label } from "@/components/ui/label";
 import { HowItWorks } from "./HowItWorks";
 import { FAQ } from "./FAQ";
+import { WhyUseSection } from "./WhyUseSection";
 import { ResultCard } from "../age-calculator/ResultCard";
 import { toast } from "sonner";
 
@@ -203,6 +204,7 @@ export const DateCalculatorComponent = () => {
         </Card>
 
         <HowItWorks />
+        <WhyUseSection />
         <FAQ />
       </div>
     </div>
