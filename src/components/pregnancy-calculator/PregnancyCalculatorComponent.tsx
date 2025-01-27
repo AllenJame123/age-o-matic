@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { WeekByWeekGuide } from "./WeekByWeekGuide";
 import { HowItWorks } from "./HowItWorks";
 import { FAQ } from "./FAQ";
+import { WhyUseSection } from "./WhyUseSection";
 import { addWeeks, differenceInWeeks } from "date-fns";
 
 export const PregnancyCalculatorComponent = () => {
@@ -47,6 +48,8 @@ export const PregnancyCalculatorComponent = () => {
           Track your pregnancy week by week and get your estimated due date
         </p>
       </div>
+
+      <WhyUseSection />
 
       <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
         <div className="space-y-6">
