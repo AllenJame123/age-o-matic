@@ -9,6 +9,7 @@ import { HowItWorks } from "./HowItWorks";
 import { FAQ } from "./FAQ";
 import { WhyUseSection } from "./WhyUseSection";
 import { addWeeks, differenceInWeeks } from "date-fns";
+import { ResultCard } from "../age-calculator/ResultCard";
 
 export const PregnancyCalculatorComponent = () => {
   const [lastPeriodDate, setLastPeriodDate] = useState<Date>();
@@ -78,26 +79,21 @@ export const PregnancyCalculatorComponent = () => {
           </div>
 
           {pregnancyDetails && (
-            <div className="grid gap-4 sm:grid-cols-3 animate-slideUp">
-              <Card className="p-6 bg-white border-2 border-primary shadow-lg">
-                <h3 className="text-sm text-gray-600 mb-1">Current Week</h3>
-                <p className="text-3xl font-bold text-primary">
-                  {pregnancyDetails.currentWeek}
-                </p>
-                <p className="text-sm text-gray-600 mt-1">weeks of pregnancy</p>
-              </Card>
-              
-              <Card className="p-6 bg-white border-2 border-primary shadow-lg sm:col-span-2">
-                <h3 className="text-sm text-gray-600 mb-1">Due Date</h3>
-                <p className="text-3xl font-bold text-primary">
-                  {pregnancyDetails.dueDate.toLocaleDateString('en-US', {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric'
-                  })}
-                </p>
-                <p className="text-sm text-gray-600 mt-1">estimated delivery</p>
-              </Card>
+            <div className="grid gap-4 sm:grid-cols-2 animate-slideUp">
+              <ResultCard
+                title="Current Week"
+                value={`Week ${pregnancyDetails.currentWeek}`}
+                description="of pregnancy"
+              />
+              <ResultCard
+                title="Due Date"
+                value={pregnancyDetails.dueDate.toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric'
+                })}
+                description="estimated delivery"
+              />
             </div>
           )}
         </div>
