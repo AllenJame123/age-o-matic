@@ -12,8 +12,8 @@ export const Navigation = () => {
     <nav className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-2">
-            <Calendar className="h-6 w-6 text-primary" />
+          <div className="flex items-center gap-1">
+            <Calendar className="h-7 w-7 text-primary" />
           </div>
           
           <button
@@ -28,10 +28,10 @@ export const Navigation = () => {
             )}
           </button>
 
-          <div className="hidden md:flex md:space-x-8">
+          <div className="hidden md:flex md:space-x-6">
             <Link
               to="/"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/" 
                   ? "text-primary" 
                   : "text-neutral-gray"
@@ -41,7 +41,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/difference"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/difference"
                   ? "text-primary"
                   : "text-neutral-gray"
@@ -51,7 +51,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/date-calculator"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/date-calculator"
                   ? "text-primary"
                   : "text-neutral-gray"
@@ -61,7 +61,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/birthday-countdown"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/birthday-countdown"
                   ? "text-primary"
                   : "text-neutral-gray"
@@ -71,7 +71,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/pregnancy-calculator"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/pregnancy-calculator"
                   ? "text-primary"
                   : "text-neutral-gray"
@@ -81,7 +81,7 @@ export const Navigation = () => {
             </Link>
             <Link
               to="/leap-year-calculator"
-              className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
                 location.pathname === "/leap-year-calculator"
                   ? "text-primary"
                   : "text-neutral-gray"
