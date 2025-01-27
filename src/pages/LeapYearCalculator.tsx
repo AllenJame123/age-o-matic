@@ -21,7 +21,7 @@ const LeapYearCalculator = () => {
         />
         <meta
           property="og:image"
-          content="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b"
+          content="https://images.unsplash.com/photo-1wqwLj2tHdo"
         />
       </Helmet>
 
