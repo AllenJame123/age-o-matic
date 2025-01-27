@@ -9,6 +9,7 @@ import DateCalculator from "./pages/DateCalculator";
 import BirthdayCountdown from "./pages/BirthdayCountdown";
 import PregnancyCalculator from "./pages/PregnancyCalculator";
 import LeapYearCalculator from "./pages/LeapYearCalculator";
+import Retirement from "./pages/Retirement";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/birthday-countdown" element={<BirthdayCountdown />} />
           <Route path="/pregnancy-calculator" element={<PregnancyCalculator />} />
           <Route path="/leap-year-calculator" element={<LeapYearCalculator />} />
+          <Route path="/retirement" element={<Retirement />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>

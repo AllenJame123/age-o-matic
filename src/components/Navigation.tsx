@@ -89,6 +89,16 @@ export const Navigation = () => {
             >
               Leap Year
             </Link>
+            <Link
+              to="/retirement"
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
+                location.pathname === "/retirement"
+                  ? "text-primary"
+                  : "text-neutral-gray"
+              }`}
+            >
+              Retirement
+            </Link>
           </div>
         </div>
       </div>
@@ -165,6 +175,17 @@ export const Navigation = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Leap Year
+          </Link>
+          <Link
+            to="/retirement"
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
+              location.pathname === "/retirement"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Retirement
           </Link>
         </div>
       </div>
