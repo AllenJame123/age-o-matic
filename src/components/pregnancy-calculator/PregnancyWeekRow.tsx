@@ -17,16 +17,16 @@ export const PregnancyWeekRow = ({ week, currentWeek, getDateForWeek }: Pregnanc
   return (
     <TableRow 
       key={week.week}
-      className={currentWeek === week.week ? "bg-primary/10 font-bold" : ""}
+      className={`${currentWeek === week.week ? "bg-primary/10 font-bold" : ""}`}
     >
-      <TableCell>{week.trimester}</TableCell>
-      <TableCell>
+      <TableCell className="whitespace-nowrap font-medium">{week.trimester}</TableCell>
+      <TableCell className="whitespace-nowrap">
         {format(getDateForWeek(week.week), "d MMM yyyy")}
       </TableCell>
-      <TableCell>Week {week.week}</TableCell>
-      <TableCell>{week.development}</TableCell>
-      <TableCell>{week.size}</TableCell>
-      <TableCell>{week.procedures}</TableCell>
+      <TableCell className="whitespace-nowrap">Week {week.week}</TableCell>
+      <TableCell className="max-w-[200px] sm:max-w-none">{week.development}</TableCell>
+      <TableCell className="whitespace-nowrap">{week.size}</TableCell>
+      <TableCell className="max-w-[200px] sm:max-w-none">{week.procedures}</TableCell>
     </TableRow>
   );
 };

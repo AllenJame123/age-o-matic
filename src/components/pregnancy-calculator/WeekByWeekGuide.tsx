@@ -22,21 +22,25 @@ export const WeekByWeekGuide = ({ currentWeek, lastPeriodDate }: WeekByWeekGuide
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-center">Pregnancy Timeline</h2>
       
-      <ScrollArea className="h-[600px] rounded-md border">
-        <Table>
-          <PregnancyTableHeader />
-          <TableBody>
-            {pregnancyData.map((week) => (
-              <PregnancyWeekRow
-                key={week.week}
-                week={week}
-                currentWeek={currentWeek}
-                getDateForWeek={getDateForWeek}
-              />
-            ))}
-          </TableBody>
-        </Table>
-      </ScrollArea>
+      <div className="w-full overflow-hidden rounded-md border">
+        <ScrollArea className="h-[600px] w-full">
+          <div className="min-w-[600px]">
+            <Table>
+              <PregnancyTableHeader />
+              <TableBody>
+                {pregnancyData.map((week) => (
+                  <PregnancyWeekRow
+                    key={week.week}
+                    week={week}
+                    currentWeek={currentWeek}
+                    getDateForWeek={getDateForWeek}
+                  />
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+        </ScrollArea>
+      </div>
     </div>
   );
 };
