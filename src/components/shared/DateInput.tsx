@@ -8,7 +8,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Calendar } from "lucide-react";
 import { format } from "date-fns";
-import { useState } from "react";
 
 interface DateInputProps {
   month: string | undefined;
@@ -29,12 +28,6 @@ export const DateInput = ({
   onYearChange,
   label,
 }: DateInputProps) => {
-  const [isTyping, setIsTyping] = useState({
-    month: false,
-    day: false,
-    year: false,
-  });
-
   const months = Array.from({ length: 12 }, (_, i) => ({
     value: String(i + 1),
     label: format(new Date(2024, i, 1), 'MMMM')
@@ -72,21 +65,19 @@ export const DateInput = ({
           <Calendar className="h-4 w-4 text-primary" />
           {label || 'Month'}
         </label>
-        {isTyping.month ? (
+        <div className="relative">
           <Input
             value={month || ''}
             onChange={(e) => handleInputChange('month', e.target.value, onMonthChange, 12)}
-            onBlur={() => setIsTyping({ ...isTyping, month: false })}
             type="number"
             min="1"
             max="12"
-            className="bg-soft-gray border-soft-purple focus:ring-primary"
+            className="w-full bg-soft-gray border-soft-purple focus:ring-primary pr-10"
             placeholder="1-12"
           />
-        ) : (
-          <Select value={month} onValueChange={onMonthChange} onOpenChange={() => setIsTyping({ ...isTyping, month: true })}>
-            <SelectTrigger className="bg-soft-gray border-soft-purple focus:ring-primary">
-              <SelectValue placeholder="Month" />
+          <Select value={month} onValueChange={onMonthChange}>
+            <SelectTrigger className="absolute inset-0 opacity-0">
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {months.map((m) => (
@@ -96,7 +87,7 @@ export const DateInput = ({
               ))}
             </SelectContent>
           </Select>
-        )}
+        </div>
       </div>
 
       <div className="space-y-2">
@@ -104,21 +95,19 @@ export const DateInput = ({
           <Calendar className="h-4 w-4 text-primary" />
           Day
         </label>
-        {isTyping.day ? (
+        <div className="relative">
           <Input
             value={day || ''}
             onChange={(e) => handleInputChange('day', e.target.value, onDayChange, 31)}
-            onBlur={() => setIsTyping({ ...isTyping, day: false })}
             type="number"
             min="1"
             max="31"
-            className="bg-soft-gray border-soft-purple focus:ring-primary"
+            className="w-full bg-soft-gray border-soft-purple focus:ring-primary pr-10"
             placeholder="1-31"
           />
-        ) : (
-          <Select value={day} onValueChange={onDayChange} onOpenChange={() => setIsTyping({ ...isTyping, day: true })}>
-            <SelectTrigger className="bg-soft-gray border-soft-purple focus:ring-primary">
-              <SelectValue placeholder="Day" />
+          <Select value={day} onValueChange={onDayChange}>
+            <SelectTrigger className="absolute inset-0 opacity-0">
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {days.map((d) => (
@@ -128,7 +117,7 @@ export const DateInput = ({
               ))}
             </SelectContent>
           </Select>
-        )}
+        </div>
       </div>
 
       <div className="space-y-2">
@@ -136,21 +125,19 @@ export const DateInput = ({
           <Calendar className="h-4 w-4 text-primary" />
           Year
         </label>
-        {isTyping.year ? (
+        <div className="relative">
           <Input
             value={year || ''}
             onChange={(e) => handleInputChange('year', e.target.value, onYearChange, currentYear)}
-            onBlur={() => setIsTyping({ ...isTyping, year: false })}
             type="number"
             min={currentYear - 100}
             max={currentYear}
-            className="bg-soft-gray border-soft-purple focus:ring-primary"
+            className="w-full bg-soft-gray border-soft-purple focus:ring-primary pr-10"
             placeholder="Year"
           />
-        ) : (
-          <Select value={year} onValueChange={onYearChange} onOpenChange={() => setIsTyping({ ...isTyping, year: true })}>
-            <SelectTrigger className="bg-soft-gray border-soft-purple focus:ring-primary">
-              <SelectValue placeholder="Year" />
+          <Select value={year} onValueChange={onYearChange}>
+            <SelectTrigger className="absolute inset-0 opacity-0">
+              <SelectValue />
             </SelectTrigger>
             <SelectContent>
               {years.map((y) => (
@@ -160,7 +147,7 @@ export const DateInput = ({
               ))}
             </SelectContent>
           </Select>
-        )}
+        </div>
       </div>
     </div>
   );
