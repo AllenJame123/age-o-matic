@@ -79,6 +79,16 @@ export const Navigation = () => {
             >
               Pregnancy Age
             </Link>
+            <Link
+              to="/leap-year-calculator"
+              className={`text-lg font-display transition-all duration-200 hover:text-primary ${
+                location.pathname === "/leap-year-calculator"
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-neutral-gray"
+              }`}
+            >
+              Leap Year
+            </Link>
           </div>
         </div>
       </div>
@@ -144,6 +154,17 @@ export const Navigation = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Pregnancy Age
+          </Link>
+          <Link
+            to="/leap-year-calculator"
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
+              location.pathname === "/leap-year-calculator"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Leap Year
           </Link>
         </div>
       </div>
