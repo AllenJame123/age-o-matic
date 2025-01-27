@@ -52,14 +52,16 @@ export const PregnancyCalculatorComponent = () => {
       <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
         <div className="space-y-6">
           <div className="space-y-2">
-            <Label>First Day of Last Period</Label>
-            <div className="border rounded-lg p-2 bg-white">
-              <Calendar
-                mode="single"
-                selected={lastPeriodDate}
-                onSelect={setLastPeriodDate}
-                className="rounded-md border"
-              />
+            <Label className="text-center block">First Day of Last Period</Label>
+            <div className="flex justify-center">
+              <div className="border rounded-lg p-2 bg-white w-fit">
+                <Calendar
+                  mode="single"
+                  selected={lastPeriodDate}
+                  onSelect={setLastPeriodDate}
+                  className="rounded-md border"
+                />
+              </div>
             </div>
           </div>
 
