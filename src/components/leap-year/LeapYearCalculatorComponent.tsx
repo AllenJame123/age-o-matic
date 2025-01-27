@@ -75,26 +75,26 @@ export const LeapYearCalculatorComponent = () => {
     <div className="p-4 sm:p-6 lg:p-8 animate-fadeIn">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-4">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
             Leap Year Calculator
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Check if a year is a leap year and find upcoming leap years
           </p>
         </div>
 
-        <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
+        <Card className="p-6 backdrop-blur-sm bg-secondary/50 shadow-lg border-secondary">
           <div className="space-y-6">
             <div className="max-w-sm mx-auto space-y-4">
               <div className="space-y-2">
-                <label htmlFor="year" className="block text-sm font-medium text-neutral-dark">
+                <label htmlFor="year" className="block text-sm font-medium text-foreground">
                   Select Year
                 </label>
                 <Select
                   value={year}
                   onValueChange={(value) => setYear(value)}
                 >
-                  <SelectTrigger className="w-full">
+                  <SelectTrigger className="w-full bg-background/50 border-secondary">
                     <SelectValue placeholder="Select a year" />
                   </SelectTrigger>
                   <SelectContent>
