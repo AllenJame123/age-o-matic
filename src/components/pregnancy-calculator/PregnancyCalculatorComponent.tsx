@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { format, addWeeks, differenceInWeeks } from "date-fns";
 import { Calendar } from "@/components/ui/calendar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { WeekByWeekGuide } from "./WeekByWeekGuide";
 import { HowItWorks } from "./HowItWorks";
 import { FAQ } from "./FAQ";
-import { WeekByWeekGuide } from "./WeekByWeekGuide";
+import { addWeeks, differenceInWeeks } from "date-fns";
 
 export const PregnancyCalculatorComponent = () => {
   const [lastPeriodDate, setLastPeriodDate] = useState<Date>();
@@ -38,7 +38,7 @@ export const PregnancyCalculatorComponent = () => {
   };
 
   return (
-    <div className="space-y-8 animate-fadeIn">
+    <div className="space-y-8">
       <div className="text-center space-y-4">
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
           Pregnancy Calculator
@@ -84,7 +84,11 @@ export const PregnancyCalculatorComponent = () => {
               <Card className="p-4 bg-soft-blue">
                 <h3 className="font-semibold text-lg mb-1">Due Date</h3>
                 <p className="text-3xl font-bold text-primary">
-                  {format(pregnancyDetails.dueDate, "MMMM d, yyyy")}
+                  {pregnancyDetails.dueDate.toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric'
+                  })}
                 </p>
                 <p className="text-sm text-gray-600 mt-1">estimated delivery</p>
               </Card>
