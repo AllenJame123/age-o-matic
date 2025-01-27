@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 const DateCalculator = () => {
   const websiteUrl = "https://agecalculator.app";
-  const pageImage = "https://images.unsplash.com/photo-1506784365847-bbad939e9335"; // Calendar with red pins
+  const pageImage = "https://images.unsplash.com/photo-1506784983877-45594efa4cbe"; // Clipboard with calendar image
 
   return (
     <>
