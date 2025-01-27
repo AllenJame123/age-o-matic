@@ -9,10 +9,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
+import { ResultCard } from "../age-calculator/ResultCard";
 
 export const LeapYearCalculatorComponent = () => {
-  const [year, setYear] = useState<string>("");
-  const [result, setResult] = useState<string>("");
+  const currentYear = new Date().getFullYear().toString();
+  const [year, setYear] = useState<string>(currentYear);
+  const [result, setResult] = useState<{
+    isLeap: boolean;
+    nextLeapYears: number[];
+  } | null>(null);
   const { toast } = useToast();
 
   const isLeapYear = (year: number): boolean => {
@@ -60,53 +65,79 @@ export const LeapYearCalculatorComponent = () => {
     const isLeap = isLeapYear(yearNum);
     const nextLeapYears = getNextThreeLeapYears(yearNum);
     
-    setResult(
-      `${yearNum} ${isLeap ? "is" : "is not"} a leap year! ${
-        isLeap ? "It has 366 days." : "It has 365 days."
-      }\n\nNext three leap years after ${yearNum}: ${nextLeapYears.join(", ")}`
-    );
+    setResult({
+      isLeap,
+      nextLeapYears
+    });
   };
 
   return (
-    <Card className="p-6 space-y-6">
-      <div className="space-y-4">
-        <div className="space-y-2">
-          <label htmlFor="year" className="block text-sm font-medium text-neutral-dark">
-            Select Year
-          </label>
-          <Select
-            value={year}
-            onValueChange={(value) => setYear(value)}
-          >
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Select a year" />
-            </SelectTrigger>
-            <SelectContent>
-              {generateYearOptions().map((yearOption) => (
-                <SelectItem key={yearOption} value={yearOption.toString()}>
-                  {yearOption}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+    <div className="min-h-screen bg-soft-gray p-4 sm:p-6 lg:p-8 animate-fadeIn">
+      <div className="max-w-4xl mx-auto space-y-8">
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
+            Leap Year Calculator
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Check if a year is a leap year and find upcoming leap years
+          </p>
         </div>
-        
-        <Button
-          onClick={handleCalculate}
-          className="w-full"
-          disabled={!year}
-        >
-          Check Leap Year
-        </Button>
 
-        {result && (
-          <div className="mt-4 p-4 bg-soft-blue rounded-lg whitespace-pre-line">
-            <p className="text-center text-lg font-medium text-neutral-dark">
-              {result}
-            </p>
+        <Card className="p-6 backdrop-blur-sm bg-white/80 shadow-lg">
+          <div className="space-y-6">
+            <div className="max-w-sm mx-auto space-y-4">
+              <div className="space-y-2">
+                <label htmlFor="year" className="block text-sm font-medium text-neutral-dark">
+                  Select Year
+                </label>
+                <Select
+                  value={year}
+                  onValueChange={(value) => setYear(value)}
+                >
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Select a year" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {generateYearOptions().map((yearOption) => (
+                      <SelectItem key={yearOption} value={yearOption.toString()}>
+                        {yearOption}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <Button
+                onClick={handleCalculate}
+                className="w-full bg-primary hover:bg-primary-light text-white"
+                disabled={!year}
+              >
+                Check Leap Year
+              </Button>
+            </div>
+
+            {result && (
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 animate-slideUp">
+                <ResultCard
+                  title="Year Status"
+                  value={result.isLeap ? "Leap Year" : "Not a Leap Year"}
+                  description={`${year} has ${result.isLeap ? "366" : "365"} days`}
+                />
+                <ResultCard
+                  title="Next Leap Year"
+                  value={result.nextLeapYears[0].toString()}
+                  description="First upcoming leap year"
+                />
+                <ResultCard
+                  title="Future Leap Years"
+                  value={`${result.nextLeapYears[1]}, ${result.nextLeapYears[2]}`}
+                  description="Next two leap years"
+                />
+              </div>
+            )}
           </div>
-        )}
+        </Card>
       </div>
-    </Card>
+    </div>
   );
 };
