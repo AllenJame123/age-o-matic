@@ -99,6 +99,16 @@ export const Navigation = () => {
             >
               Retirement
             </Link>
+            <Link
+              to="/generation-finder"
+              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
+                location.pathname === "/generation-finder"
+                  ? "text-primary"
+                  : "text-neutral-gray"
+              }`}
+            >
+              Generational Cohort
+            </Link>
           </div>
         </div>
       </div>
@@ -186,6 +196,17 @@ export const Navigation = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Retirement
+          </Link>
+          <Link
+            to="/generation-finder"
+            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
+              location.pathname === "/generation-finder"
+                ? "bg-soft-purple text-primary"
+                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Generational Cohort
           </Link>
         </div>
       </div>
