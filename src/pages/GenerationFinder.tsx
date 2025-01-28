@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 
 const GenerationFinder = () => {
   const websiteUrl = "https://agecalculator.app/generation-finder";
-  const pageImage = "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846";
+  const pageImage = "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f";
 
   return (
     <div className="min-h-screen bg-gray-50">
