@@ -128,6 +128,8 @@ export const GenerationFinderComponent = () => {
         </Card>
       )}
 
+      <HowItWorks />
+
       <Card className="p-6">
         <h2 className="text-2xl font-bold text-center mb-6">Generation Overview ({currentYear})</h2>
         <div className="overflow-x-auto">
@@ -178,9 +180,70 @@ export const GenerationFinderComponent = () => {
             </tbody>
           </table>
         </div>
+
+        <div className="mt-8 space-y-6">
+          <h3 className="text-xl font-semibold">Interesting Facts About Each Generation</h3>
+          
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-semibold text-primary">The Silent Generation</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>They were the first generation to embrace television as a primary form of entertainment.</li>
+                <li>This generation has the highest rate of civic engagement and volunteerism among all living generations.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-primary">Baby Boomers</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>They witnessed and participated in significant cultural movements like Woodstock and the Civil Rights Movement.</li>
+                <li>This generation controls about 70% of all disposable income in the United States.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-primary">Generation X</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>They were the first generation to grow up with personal computers in their homes.</li>
+                <li>Gen X has the highest rate of startup founders among all generations.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-primary">Millennials</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>They are the most educated generation in history, with over 39% holding a bachelor's degree.</li>
+                <li>Millennials are the first generation to prioritize experiences over material possessions in their spending habits.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-primary">Generation Z</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>They are the most diverse generation in history and have never known a world without the internet.</li>
+                <li>Gen Z has an average attention span of 8 seconds, compared to 12 seconds for millennials.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-primary">Generation Alpha</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>They are the first generation to be born entirely in the 21st century.</li>
+                <li>Expected to be the most technologically immersed generation, with AI being a natural part of their daily lives.</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-primary">Generation Beta</h4>
+              <ul className="list-disc pl-5 space-y-1">
+                <li>Predicted to be the most globally connected generation through advanced technology.</li>
+                <li>Expected to have the longest life expectancy of any generation due to medical advancements.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </Card>
 
-      <HowItWorks />
       <FAQ />
     </div>
   );
