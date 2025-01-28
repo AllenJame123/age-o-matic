@@ -40,7 +40,7 @@ export const RetirementCalculatorComponent = () => {
     const daysToWork = Math.round(daysToRetire * (5/7)); // Approximate working days
 
     setResult({
-      retirementDate: format(retirementDate, 'yyyy MMMM dd'),
+      retirementDate: format(retirementDate, 'd MMM yyyy'),
       daysToRetire,
       daysToWork,
     });
