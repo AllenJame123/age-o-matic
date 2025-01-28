@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { Users2 } from "lucide-react";
+import { HowItWorks } from "./HowItWorks";
+import { FAQ } from "./FAQ";
 
 interface GenerationResult {
   generation: string;
@@ -73,6 +75,8 @@ export const GenerationFinderComponent = () => {
     setResult(findGeneration(year));
   };
 
+  const currentYear = 2025;
+
   return (
     <div className="max-w-3xl mx-auto space-y-8">
       <div className="text-center space-y-4">
@@ -123,6 +127,61 @@ export const GenerationFinderComponent = () => {
           </div>
         </Card>
       )}
+
+      <Card className="p-6">
+        <h2 className="text-2xl font-bold text-center mb-6">Generation Overview ({currentYear})</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr className="bg-soft-gray">
+                <th className="p-3 text-left">Generation</th>
+                <th className="p-3 text-left">Time Frame</th>
+                <th className="p-3 text-left">Age in {currentYear}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b">
+                <td className="p-3">The Silent Generation</td>
+                <td className="p-3">1928-1945</td>
+                <td className="p-3">80-97 years old</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Baby Boomers</td>
+                <td className="p-3">1946-1964</td>
+                <td className="p-3">61-79 years old</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Gen X</td>
+                <td className="p-3">1965-1980</td>
+                <td className="p-3">45-60 years old</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Millennials</td>
+                <td className="p-3">1981-1996</td>
+                <td className="p-3">29-44 years old</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Gen Z</td>
+                <td className="p-3">1997-2012</td>
+                <td className="p-3">13-28 years old</td>
+              </tr>
+              <tr className="border-b">
+                <td className="p-3">Gen Alpha</td>
+                <td className="p-3">2013-2024</td>
+                <td className="p-3">1-12 years old</td>
+              </tr>
+              <tr>
+                <td className="p-3">Gen Beta</td>
+                <td className="p-3">2025-2039</td>
+                <td className="p-3">0 years old</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </Card>
+
+      <HowItWorks />
+      <FAQ />
     </div>
   );
 };
