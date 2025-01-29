@@ -1,9 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Calendar } from "lucide-react";
 import { useState } from "react";
+import { Menu, X, Calendar } from "lucide-react";
+import { DesktopNav } from "./navigation/DesktopNav";
+import { MobileNav } from "./navigation/MobileNav";
 
 export const Navigation = () => {
-  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -28,188 +28,11 @@ export const Navigation = () => {
             )}
           </button>
 
-          <div className="hidden md:flex md:space-x-6">
-            <Link
-              to="/"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/" 
-                  ? "text-primary" 
-                  : "text-neutral-gray"
-              }`}
-            >
-              Age Calculator
-            </Link>
-            <Link
-              to="/difference"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/difference"
-                  ? "text-primary"
-                  : "text-neutral-gray"
-              }`}
-            >
-              Age Difference
-            </Link>
-            <Link
-              to="/date-calculator"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/date-calculator"
-                  ? "text-primary"
-                  : "text-neutral-gray"
-              }`}
-            >
-              Date Calculator
-            </Link>
-            <Link
-              to="/birthday-countdown"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/birthday-countdown"
-                  ? "text-primary"
-                  : "text-neutral-gray"
-              }`}
-            >
-              Birthday Countdown
-            </Link>
-            <Link
-              to="/pregnancy-calculator"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/pregnancy-calculator"
-                  ? "text-primary"
-                  : "text-neutral-gray"
-              }`}
-            >
-              Pregnancy Age
-            </Link>
-            <Link
-              to="/leap-year-calculator"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/leap-year-calculator"
-                  ? "text-primary"
-                  : "text-neutral-gray"
-              }`}
-            >
-              Leap Year
-            </Link>
-            <Link
-              to="/retirement"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/retirement"
-                  ? "text-primary"
-                  : "text-neutral-gray"
-              }`}
-            >
-              Retirement
-            </Link>
-            <Link
-              to="/what-generation-am-i"
-              className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/what-generation-am-i"
-                  ? "text-primary"
-                  : "text-neutral-gray"
-              }`}
-            >
-              Generational Cohort
-            </Link>
-          </div>
+          <DesktopNav />
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`${
-          isMenuOpen ? "block" : "hidden"
-        } md:hidden absolute top-16 inset-x-0 z-50 bg-white shadow-lg`}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1">
-          <Link
-            to="/"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Age Calculator
-          </Link>
-          <Link
-            to="/difference"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/difference"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Age Difference
-          </Link>
-          <Link
-            to="/date-calculator"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/date-calculator"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Date Calculator
-          </Link>
-          <Link
-            to="/birthday-countdown"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/birthday-countdown"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Birthday Countdown
-          </Link>
-          <Link
-            to="/pregnancy-calculator"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/pregnancy-calculator"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Pregnancy Age
-          </Link>
-          <Link
-            to="/leap-year-calculator"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/leap-year-calculator"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Leap Year
-          </Link>
-          <Link
-            to="/retirement"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/retirement"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Retirement
-          </Link>
-          <Link
-            to="/what-generation-am-i"
-            className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/what-generation-am-i"
-                ? "bg-soft-purple text-primary"
-                : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
-            }`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Generational Cohort
-          </Link>
-        </div>
-      </div>
+      <MobileNav isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </nav>
   );
 };
