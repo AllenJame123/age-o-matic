@@ -100,9 +100,9 @@ export const Navigation = () => {
               Retirement
             </Link>
             <Link
-              to="/generation-finder"
+              to="/what-generation-am-i"
               className={`text-base font-medium transition-colors duration-200 hover:text-primary ${
-                location.pathname === "/generation-finder"
+                location.pathname === "/what-generation-am-i"
                   ? "text-primary"
                   : "text-neutral-gray"
               }`}
@@ -198,9 +198,9 @@ export const Navigation = () => {
             Retirement
           </Link>
           <Link
-            to="/generation-finder"
+            to="/what-generation-am-i"
             className={`block px-3 py-2 rounded-md text-base font-display transition-colors duration-200 ${
-              location.pathname === "/generation-finder"
+              location.pathname === "/what-generation-am-i"
                 ? "bg-soft-purple text-primary"
                 : "text-neutral-gray hover:bg-soft-gray hover:text-primary"
             }`}

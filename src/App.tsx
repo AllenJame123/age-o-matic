@@ -28,7 +28,7 @@ const App = () => (
           <Route path="/pregnancy-calculator" element={<PregnancyCalculator />} />
           <Route path="/leap-year-calculator" element={<LeapYearCalculator />} />
           <Route path="/retirement" element={<Retirement />} />
-          <Route path="/generation-finder" element={<GenerationFinder />} />
+          <Route path="/what-generation-am-i" element={<GenerationFinder />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
