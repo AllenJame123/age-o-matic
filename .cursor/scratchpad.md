@@ -211,6 +211,11 @@ The Age-O-Matic website currently uses React with some SSR capabilities through 
    - *Check Core Web Vitals*
    - *Validate all structured data*
 
+5. *Build Blocker: Netlify/CI Build Fails Before Dependency Installation*
+   - *Error: /opt/build-bin/run-build-functions.sh: line XX: mkdir: command not found, touch: command not found, mise: command not found, Error setting python version from 3.13, Failing build: Failed to install dependencies.*
+   - *Analysis: The build environment is missing basic Unix utilities (mkdir, touch), which is highly unusual for a standard CI/CD environment. The error with mise and Python versioning suggests a misconfigured or missing environment manager. The build fails before reaching project dependency installation.*
+   - *Assistance Request: Is this a Netlify build, or are you running this in a custom CI/CD environment? Please clarify so I can suggest the most appropriate fix.*
+
 ## Lessons
 - The current project already has some SSR capabilities through vite-plugin-ssr, which is a good starting point
 - Next.js App Router or Remix would provide more comprehensive SSR capabilities and better SEO
