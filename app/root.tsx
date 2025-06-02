@@ -1,4 +1,4 @@
-import { cssBundleHref } from "@remix-run/css-bundle";
+import * as React from "react";
 import {
   Links,
   LiveReload,
@@ -10,10 +10,8 @@ import {
 } from "@remix-run/react";
 import { json, type LinksFunction, type LoaderFunctionArgs } from "@remix-run/node";
 import styles from "./styles/global.css";
-import { Navigation } from "./components/Navigation";
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: styles },
   { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
   { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
@@ -48,7 +46,6 @@ export default function App() {
         <Links />
       </head>
       <body className="min-h-screen bg-gray-50">
-        <Navigation />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
